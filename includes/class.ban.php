@@ -1,6 +1,6 @@
-<?php 
+<?php
 //หากมีการเรียกไฟล์นี้โดยตรง
-if (eregi("config.in.php",$PHP_SELF)) {
+if (preg_match("/config\.in\.php/",$PHP_SELF)) {
     Header("Location: ../index.php");
     die();
 }
@@ -60,7 +60,7 @@ $ban = array(
 	"ลดน้ำหนัก3-10 กิโลกรัม",
 	"รับรองผลภายใน 1 เดือน",
 	"ผลิตภัณฑ์จากธรรมชาติ",
-	"ลดความอ้วน",	
+	"ลดความอ้วน",
 	"ไม่ต้องอดอาหาร",
 	"ผิวพรรณดูดีขึ้น",
 	"www.fast2slim.com/fast",

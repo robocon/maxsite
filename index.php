@@ -1,9 +1,10 @@
-<?php 
+<?php
 session_start();
-require_once("mainfile.php");
 $PHP_SELF = "index.php";
-GETMODULE($_GET[name],$_GET[file]);
-
+require_once("mainfile.php");
+$name = isset($_GET['name']) ? trim($_GET['name']) : 'index' ;
+$file = isset($_GET['file']) ? trim($_GET['file']) : 'index' ;
+GETMODULE($name, $file);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
@@ -15,7 +16,7 @@ GETMODULE($_GET[name],$_GET[file]);
 <link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="highslide/highslide.js"></script>
 <script type="text/javascript" src="highslide/highslide-html.js"></script>
-<script type="text/javascript">    
+<script type="text/javascript">
     hs.graphicsDir = 'highslide/graphics/';
     hs.outlineType = 'rounded-white';
     hs.outlineWhileAnimating = true;
@@ -100,7 +101,7 @@ function MM_jumpMenuGo(selName,targ,restore){ //v3.0
 <div id="dhtmltooltip"></div>
 <script type="text/javascript" src="dhtmltooltip.js"></script>
 
-<TABLE width=760 height="100%" 
+<TABLE width=760 height="100%"
 border=0 align=center cellPadding=0 cellSpacing=0 background="images/back.gif">
   <TBODY>
     <TR>
@@ -151,7 +152,18 @@ border=0 align=center cellPadding=0 cellSpacing=0 background="images/back.gif">
     <TR>
       <TD  vAlign=top height="100%"><table width="720" height="100" border="0" align="center" cellpadding="5" cellspacing="0" background="images/bottom-en.jpg">
         <tr>
-          <td height="35"><div align="right" class="foottext"><IMG SRC="images/icon/bullet.gif" BORDER="0" ALIGN="absmiddle"> <a href="index.php"><FONT COLOR="#FFFFFF">Home</FONT></a>&nbsp;&nbsp;&nbsp;&nbsp;<IMG SRC="images/icon/bullet.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=aboutus"><FONT COLOR="#FFFFFF">About us</FONT></A>&nbsp;&nbsp;&nbsp;&nbsp;<IMG SRC="images/icon/bullet.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=news"><FONT COLOR="#FFFFFF">News</FONT></A>&nbsp;&nbsp;&nbsp;&nbsp;<IMG SRC="images/icon/bullet.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=calendar"><FONT COLOR="#FFFFFF">Calendar</FONT></A>&nbsp;&nbsp;&nbsp;&nbsp;<IMG SRC="images/icon/bullet.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=webboard"><FONT COLOR="#FFFFFF">Webboard</FONT></A>&nbsp;&nbsp;&nbsp;&nbsp;<IMG SRC="images/icon/bullet.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=knowledge"><FONT COLOR="#FFFFFF">Knowledge</FONT></A>&nbsp;&nbsp;&nbsp;&nbsp;<IMG SRC="images/icon/bullet.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=contact"><FONT COLOR="#FFFFFF">Contact us</FONT></A>&nbsp;&nbsp;&nbsp;&nbsp;<IMG SRC="images/icon/bullet.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin<?php if($_SESSION['admin_user']){echo "&file=main";};?>"><FONT COLOR="#FFFFFF">Admin</FONT></A> </div></td>
+          <td height="35">
+              <div align="right" class="foottext">
+                <IMG SRC="images/icon/bullet.gif" BORDER="0" ALIGN="absmiddle"> <a href="index.php"><FONT COLOR="#FFFFFF">Home</FONT></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <IMG SRC="images/icon/bullet.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=aboutus"><FONT COLOR="#FFFFFF">About us</FONT></A>&nbsp;&nbsp;&nbsp;&nbsp;
+                <IMG SRC="images/icon/bullet.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=news"><FONT COLOR="#FFFFFF">News</FONT></A>&nbsp;&nbsp;&nbsp;&nbsp;
+                <IMG SRC="images/icon/bullet.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=calendar"><FONT COLOR="#FFFFFF">Calendar</FONT></A>&nbsp;&nbsp;&nbsp;&nbsp;
+                <IMG SRC="images/icon/bullet.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=webboard"><FONT COLOR="#FFFFFF">Webboard</FONT></A>&nbsp;&nbsp;&nbsp;&nbsp;
+                <IMG SRC="images/icon/bullet.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=knowledge"><FONT COLOR="#FFFFFF">Knowledge</FONT></A>&nbsp;&nbsp;&nbsp;&nbsp;
+                <IMG SRC="images/icon/bullet.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=contact"><FONT COLOR="#FFFFFF">Contact us</FONT></A>&nbsp;&nbsp;&nbsp;&nbsp;
+                <IMG SRC="images/icon/bullet.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin<?php if(isset($_SESSION['admin_user'])){ echo "&file=main";};?>"><FONT COLOR="#FFFFFF">Admin</FONT></A>
+              </div>
+          </td>
         </tr>
         <tr>
           <td valign="top"><div align="center" class="foottext"><strong><?=_SCRIPT." "._VERSION ;?> : : Easy & Easy CMS for Thailand.</strong><br>

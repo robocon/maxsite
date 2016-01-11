@@ -1,6 +1,6 @@
-<?php 
+<?php
 //หากมีการเรียกไฟล์นี้โดยตรง
-if (eregi("config.in.php",$PHP_SELF)) {
+if (preg_match("/config\.in\.php/",$PHP_SELF)) {
     Header("Location: ../index.php");
     die();
 }
