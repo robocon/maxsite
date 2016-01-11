@@ -5,7 +5,7 @@
           <TD width="710" vAlign=top><IMG src="images/topfader.gif" border=0><BR>
 		  <!-- Webboard -->
 		  &nbsp;&nbsp;<IMG SRC="images/menu/textmenu_webboard.gif" BORDER="0"><BR>
-<?
+<?php 
 $_GET['category'] = intval($_GET['category']);
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res[BoardCat] = $db->select_query("SELECT * FROM ".TB_WEBBOARD_CAT." ORDER BY sort ");
@@ -43,7 +43,7 @@ if($_GET[category]){
 	<td bgcolor="#E5E5E5" width="120"><CENTER><B>วันที่</B></CENTER></td>
 </tr>
 <tr><td colspan="3" height=1 class="dotline"></td></tr>
-<?
+<?php 
 //แสดงกระทู้ปักหมุด
 $res[Pin] = $db->select_query("SELECT * FROM ".TB_WEBBOARD." $SQLwherePin ORDER BY pin_date DESC  LIMIT "._SHOW_BOARD_PIN." ");
 while($arr[Pin] = $db->fetch($res[Pin])){
@@ -116,7 +116,7 @@ echo "</table>";
 				<table border="0" cellpadding="0" cellspacing="1" width="700" align=center>
 					<tr>
 						<td>
-				<?
+				<?php 
 				SplitPage($page,$totalpage,"?name=webboard&category=".$_GET[category]."");
 				echo $ShowSumPages ;
 				echo "<BR>";

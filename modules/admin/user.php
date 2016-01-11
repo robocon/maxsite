@@ -1,4 +1,4 @@
-<?
+<?php 
 CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 ?>
 	<TABLE cellSpacing=0 cellPadding=0 width=720 border=0>
@@ -19,7 +19,7 @@ CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 <A HREF="?name=admin&file=user"><IMG SRC="images/admin/admins.gif"  BORDER="0" align="absmiddle"> จัดการผู้ดูแลระบบ</A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=user&op=admin_add"><IMG SRC="images/admin/user.gif"  BORDER="0" align="absmiddle"> เพิ่มผู้ดูแลระบบ</A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=groups"><IMG SRC="images/admin/keys.gif"  BORDER="0" align="absmiddle"> ระดับของผู้ดูแลระบบ</A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=groups&op=group_add"><IMG SRC="images/admin/share.gif"  BORDER="0" align="absmiddle"> เพิ่มระดับของผู้ดูแลระบบ</A>
 <BR><BR>
 <!-- แสดงผลรายการผู้ดูแลระบบ -->
-<?
+<?php 
 //////////////////////////////////////////// แสดงรายชื่อผู้ดูแลระบบ
 if($_GET[op] == ""){
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
@@ -43,7 +43,7 @@ $goto = ($page-1)*$limit ;
    <td><font color="#FFFFFF"><B>Level</B></font></td>
    <td><font color="#FFFFFF"><B><CENTER>Check</CENTER></B></font></td>
   </tr>  
-<?
+<?php 
 $res[user] = $db->select_query("SELECT * FROM ".TB_ADMIN." ORDER BY id DESC LIMIT $goto, $limit ");
 while($arr[user] = $db->fetch($res[user])){
 	$res[groups] = $db->select_query("SELECT * FROM ".TB_ADMIN_GROUP." WHERE id='".$arr[user][level]."' ");
@@ -51,19 +51,19 @@ while($arr[user] = $db->fetch($res[user])){
 ?>
     <tr>
      <td width="44">
-      <a href="?name=admin&file=user&op=admin_edit&id=<? echo $arr[user][id];?>"><img src="images/icon/edit.gif" border="0" alt="แก้ไข" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=user&op=admin_del&id=<? echo $arr[user][id];?>','คุณมั่นใจในการลบชื่อผู้ใช้ : <?echo $arr[user][username];?>');"><img src="images/icon/trash.gif"  border="0" alt="ลบ" ></a>
+      <a href="?name=admin&file=user&op=admin_edit&id=<?php echo $arr[user][id];?>"><img src="images/icon/edit.gif" border="0" alt="แก้ไข" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=user&op=admin_del&id=<?php echo $arr[user][id];?>','คุณมั่นใจในการลบชื่อผู้ใช้ : <?php echo $arr[user][username];?>');"><img src="images/icon/trash.gif"  border="0" alt="ลบ" ></a>
      </td> 
-     <td><?echo $arr[user][username];?></td>
-     <td ><? echo $arr[user][name];?></td>
-     <td ><? echo $arr[user][email];?></td>
-     <td ><? echo $arr[groups][name];?></td>
-     <td  align="center" width="40"><input type="checkbox" name="list[]" value="<? echo $arr[user][id];?>"></td>
+     <td><?php echo $arr[user][username];?></td>
+     <td ><?php echo $arr[user][name];?></td>
+     <td ><?php echo $arr[user][email];?></td>
+     <td ><?php echo $arr[groups][name];?></td>
+     <td  align="center" width="40"><input type="checkbox" name="list[]" value="<?php echo $arr[user][id];?>"></td>
     </tr>
 	<TR>
 		<TD colspan="6" height="1" class="dotline"></TD>
 	</TR>
-<?
+<?php 
  } 
 ?>
  </table>
@@ -73,7 +73,7 @@ while($arr[user] = $db->fetch($res[user])){
  <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form><BR><BR>
-<?
+<?php 
 	SplitPage($page,$totalpage,"?name=admin&file=user");
 	echo $ShowSumPages ;
 	echo "<BR>";
@@ -142,7 +142,7 @@ else if($_GET[op] == "admin_add"){
 <INPUT TYPE="text" NAME="EMAIL" size="40"><BR>
 <B>Level :</B><BR>
 <SELECT NAME="LEVEL">
-<?
+<?php 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res[groups] = $db->select_query("SELECT * FROM ".TB_ADMIN_GROUP." ORDER BY id ");
    while ($arr[groups] = $db->fetch($res[groups]))
@@ -155,7 +155,7 @@ $db->closedb ();
 <BR><BR>
 <INPUT TYPE="submit" value=" เพิ่มผู้ดูแลระบบ ">
 </FORM>
-<?
+<?php 
 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
@@ -229,7 +229,7 @@ else if($_GET[op] == "admin_edit"){
 <INPUT TYPE="text" NAME="EMAIL" size="40" VALUE="<?=$arr[admin][email];?>"><BR>
 <B>Level :</B><BR>
 <SELECT NAME="LEVEL">
-<?
+<?php 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res[groups] = $db->select_query("SELECT * FROM ".TB_ADMIN_GROUP." ORDER BY id ");
    while ($arr[groups] = $db->fetch($res[groups]))
@@ -244,7 +244,7 @@ $db->closedb ();
 <BR><BR>
 <INPUT TYPE="submit" value=" แก้ไขผู้ดูแลระบบ "><INPUT TYPE="hidden" NAME="oldpass" value="<?=$arr[admin][password];?>">
 </FORM>
-<?
+<?php 
 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;
@@ -353,7 +353,7 @@ else if($_GET[op] == "minepass_edit"){
 <BR><BR>
 <INPUT TYPE="submit" value=" แก้ไขข้อมูลส่วนตัว "><INPUT TYPE="hidden" NAME="oldpass" value="<?=$arr[admin][password];?>">
 </FORM>
-<?
+<?php 
 	}else{
 		//กรณีไม่ผ่าน
 		echo $PermissionFalse ;

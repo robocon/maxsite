@@ -1,4 +1,4 @@
-<?php
+<?php 
 header('Content-type: text/html; charset=utf-8');
 
 //$spellercss = '/speller/spellerStyle.css';	// by FredCK
@@ -149,7 +149,7 @@ var suggs = new Array();
 var words = new Array();
 var textinputs = new Array();
 var error;
-<?php
+<?php 
 
 print_textinputs_var();
 

@@ -22,7 +22,7 @@ function emoticon(theSmilie) {
 		  <!-- News -->
 		  &nbsp;&nbsp;<IMG SRC="images/menu/textmenu_knowledge2.gif" BORDER="0"><BR><BR>
 				<TABLE width="700" align=center cellSpacing=0 cellPadding=0 border=0>
-<?
+<?php 
 $_GET['id'] = intval($_GET['id']);
 //แสดงสาระน่ารู้ 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
@@ -50,13 +50,13 @@ if(!$arr[knowledge][id]){
 					<B><FONT COLOR="#990000"><?=$arr[category][category_name];?><BR><?=$arr[knowledge][topic];?></FONT></B>
 					<BR>
 					<?= ThaiTimeConvert($arr[knowledge][post_date],"1","");?>
-<?
+<?php 
 if($_SESSION['admin_user']){
 	//Admin Login Show Icon
 ?>
-				  <a href="?name=admin&file=knowledge&op=article_edit&id=<? echo $arr[knowledge][id];?>"><img src="images/admin/edit.gif" border="0" alt="แก้ไข" ></a> 
-				  <a href="javascript:Confirm('?name=admin&file=knowledge&op=article_del&id=<? echo $arr[knowledge][id];?>&prefix=<? echo $arr[knowledge][post_date];?>','คุณมั่นใจในการลบหัวข้อนี้ ?');"><img src="images/admin/trash.gif"  border="0" alt="ลบ" ></a>
-<?
+				  <a href="?name=admin&file=knowledge&op=article_edit&id=<?php echo $arr[knowledge][id];?>"><img src="images/admin/edit.gif" border="0" alt="แก้ไข" ></a> 
+				  <a href="javascript:Confirm('?name=admin&file=knowledge&op=article_del&id=<?php echo $arr[knowledge][id];?>&prefix=<?php echo $arr[knowledge][post_date];?>','คุณมั่นใจในการลบหัวข้อนี้ ?');"><img src="images/admin/trash.gif"  border="0" alt="ลบ" ></a>
+<?php 
 }
 ?>					
 					<BR><BR>
@@ -81,7 +81,7 @@ if($_SESSION['admin_user']){
 					<TD>
 					<BR>
 					<B><FONT COLOR="#990000"><?=$arr[category][category_name];?> 5 อันดับล่าสุด</B></FONT><BR><BR>
-<?
+<?php 
 //แสดงสาระน่ารู้ 5 อันดับล่าสุดของหมวดหมู่ 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res[knowledgecat] = $db->select_query("SELECT * FROM ".TB_KNOWLEDGE." WHERE category='".$arr[category][id]."' ORDER BY id DESC LIMIT 5 ");
@@ -92,19 +92,19 @@ if(!$rows[knowledgecat]){
 while($arr[knowledgecat] = $db->fetch($res[knowledgecat])){
 ?>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG SRC="images/icon/suggest.gif" BORDER="0" ALIGN="absmiddle"> <B><A HREF="?name=knowledge&file=readknowledge&id=<?=$arr[knowledgecat][id];?>" target="_blank"><?=$arr[knowledgecat][topic];?></A></B> <?= ThaiTimeConvert($arr[knowledgecat][post_date],"","");?><BR>
-<?
+<?php 
 }
 $db->closedb ();
 ?>
 					</TD>
 				</TR>
-<?
+<?php 
 }
 ?>
 			</TABLE>
 			<BR><BR>
 			
-<?
+<?php 
 if($arr[knowledge][enable_comment]){
 
 	//Check Comment
@@ -117,7 +117,7 @@ if($arr[knowledge][enable_comment]){
 			<TABLE cellSpacing=5 cellPadding=0 width=480 border=0 align="center" class="tablecomment">
 			<TR>
 				<TD><B><FONT COLOR="#990000">ความคิดเห็นที่ <?=$count;?></FONT></B>
-				<?if($_SESSION['admin_user']){echo " <A HREF=\"?name=knowledge&file=delete_comment&id=".$_GET[id]."&comment=".$arr[comment][id]."\"><IMG SRC=\"images/admin/trash.gif\" WIDTH=\"20\" HEIGHT=\"20\" BORDER=\"0\" ALIGN=\"absmiddle\"></A>";};?>
+				<?php if($_SESSION['admin_user']){echo " <A HREF=\"?name=knowledge&file=delete_comment&id=".$_GET[id]."&comment=".$arr[comment][id]."\"><IMG SRC=\"images/admin/trash.gif\" WIDTH=\"20\" HEIGHT=\"20\" BORDER=\"0\" ALIGN=\"absmiddle\"></A>";};?>
 				<BR><?= ThaiTimeConvert($arr[comment][post_date],"1","1");?>
 				</TD>
 			</TR>
@@ -136,7 +136,7 @@ if($arr[knowledge][enable_comment]){
 			</TR>
 			</TABLE>
 			<BR>
-<?
+<?php 
 	}
 	$db->closedb ();
 ?>
@@ -153,12 +153,12 @@ if($arr[knowledge][enable_comment]){
 							<TD width="80" align="right"><B>ชื่อ/Email : </B></TD>
 							<TD><INPUT TYPE="text" NAME="NAME" style="width:300;"></TD>
 						</TR>
-<?
+<?php 
 if(USE_CAPCHA){
 ?>
 						<TR>
 							<TD width="80" align="right">
-							<?if(CAPCHA_TYPE == 1){ 
+							<?php if(CAPCHA_TYPE == 1){ 
 								echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 							}else if(CAPCHA_TYPE == 2){ 
 								echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
@@ -166,7 +166,7 @@ if(USE_CAPCHA){
 							</TD>
 							<TD><input name="security_code" type="text" id="security_code" size="20" maxlength="6" style="width:80" > ใส่รหัสที่ท่านเห็นลงในช่องนี้ </TD>
 						</TR>
-<?
+<?php 
 }
 ?>
 						<TR>
@@ -370,7 +370,7 @@ if(USE_CAPCHA){
 			ข้อความที่ท่านได้อ่าน เกิดจากการเขียนโดยสาธารณชน และส่งขึ้นมาแบบอัตโนมัติ เจ้าของระบบไม่รับผิดชอบต่อข้อความใดๆทั้งสิ้น เพราะไม่สามารถระบุได้ว่าเป็นความจริงหรือ ชื่อผู้เขียนที่ได้เห็นคือชื่อจริง ผู้อ่านจึงควรใช้วิจารณญาณในการกลั่นกรอง และถ้าท่านพบเห็นข้อความใดที่ขัดต่อกฎหมายและศีลธรรม กรุณาแจ้งที่ <A HREF="mailto:mocyc@hotmail.com">mocyc@hotmail.com</A> เพื่อให้ผู้ควบคุมระบบทราบและทำการลบข้อความนั้น ออกจากระบบต่อไป
 			<BR><BR>
 			<!-- End Enable Comment -->
-<?
+<?php 
 }
 ?>
 

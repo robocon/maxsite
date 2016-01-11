@@ -1,4 +1,4 @@
-<?
+<?php 
 //หากมีการเรียกไฟล์นี้โดยตรง
 if (eregi("mainfile.php",$PHP_SELF)) {
     Header("Location: index.php");

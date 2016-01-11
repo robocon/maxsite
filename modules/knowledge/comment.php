@@ -1,4 +1,4 @@
-<?
+<?php 
 if(!$_POST[NAME] OR !$_POST[COMMENT]){
 	echo "<script language='javascript'>" ;
 	echo "alert('!!!! กรุณากรอกข้อมูลต่างๆให้ครบถ้วนครับ !!!!')" ;

@@ -1,4 +1,4 @@
-<?
+<?php 
 CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 
 if($_GET[op] == "calendar_add"){
@@ -82,7 +82,7 @@ if($_GET[op] == "calendar_add"){
 					<TD>
 					<BR><B>&nbsp;&nbsp;<IMG SRC="images/icon/calendar.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; เพิ่มรายการปฏิทินใหม่ </B>
 					<BR><BR>
-<?
+<?php 
 if(!$ProcessOutput){
 ?>
 <form NAME="myform" METHOD=POST ACTION="?name=admin&file=addevent&op=calendar_add">
@@ -95,7 +95,7 @@ if(!$ProcessOutput){
 <BR><BR>
 &nbsp;&nbsp;&nbsp;<b>รายละเอียด :</b><BR>
 
-<?
+<?php 
 include("FCKeditor/fckeditor.php") ;
 $oFCKeditor = new FCKeditor('DETAIL') ;
 $oFCKeditor->BasePath	= 'FCKeditor/' ;
@@ -106,7 +106,7 @@ $oFCKeditor->Create() ;
 ?>
 <input type="submit" value=" เพิ่มรายการในปฏิทิน " name="submit"> <input type="reset" value=" เคลีย " name="reset">
 </form>
-<?
+<?php 
 }else{
 	echo $ProcessOutput ;
 }

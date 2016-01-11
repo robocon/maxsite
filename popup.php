@@ -1,4 +1,4 @@
-<?
+<?php 
 session_start();
 require_once("mainfile.php");
 $PHP_SELF = "popup.php";
@@ -19,7 +19,7 @@ GETMODULE($_GET[name],$_GET[file]);
 <body  >
 
 <!-- Content -->
-<?include ("".$MODPATHFILE."");?>
+<?php include ("".$MODPATHFILE."");?>
 <!-- End Content -->
 
 </body>

@@ -1,4 +1,4 @@
-<?
+<?php 
 CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 
 if($_GET[op] == "calendar_del"){
@@ -43,7 +43,7 @@ if($_GET[op] == "calendar_del"){
 					<TD>
 					<BR><B>&nbsp;&nbsp;<IMG SRC="images/icon/calendar.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; ลบรายการปฏิทิน</B>
 					<BR><BR>
-<?
+<?php 
 if(!$ProcessOutput){
 ?>
 <CENTER><IMG SRC="images/icon/dangerous.png" BORDER="0"><BR><BR><B>ท่านต้องการลบปฏิทินกิจกรรมนี้ ใช่หรือไม่ ?</B>
@@ -52,7 +52,7 @@ if(!$ProcessOutput){
 <INPUT TYPE="submit" VALUE=" ต้องการลบปฏิทินกิจกรรม ">
 </FORM>
 </CENTER>
-<?
+<?php 
 }else{
 	echo $ProcessOutput ;
 }

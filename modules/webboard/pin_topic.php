@@ -1,4 +1,4 @@
-<?
+<?php 
 CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 ?>
 	<TABLE cellSpacing=0 cellPadding=0 width=720 border=0>
@@ -9,7 +9,7 @@ CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 		  <!-- Pin  -->
 		  &nbsp;&nbsp;<IMG SRC="images/menu/textmenu_webboard.gif" BORDER="0"><BR><BR>
 				<BR><BR>
-<?
+<?php 
 	if(CheckLevel($_SESSION['admin_user'],"webboard_edit")){
 		$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 		if($_GET[action] == "addpin"){

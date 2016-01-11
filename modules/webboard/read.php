@@ -1,4 +1,4 @@
-<?
+<?php 
 $_GET['id'] = intval($_GET['id']);
 //ดึงข้อมูลกระทู้ 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
@@ -95,7 +95,7 @@ function emoticon(theSmilie) {
 		  <!-- Webboard -->
 		  &nbsp;&nbsp;<IMG SRC="images/menu/textmenu_webboard.gif" BORDER="0"><BR>
 
-<?
+<?php 
 //แสดงผลการPost 
 if($PostComplete){
 	//Complete
@@ -113,7 +113,7 @@ if($PostComplete){
 </TR>
 <TR><TD height=1 class="dotline"></TD></TR>
 </TABLE><BR><BR>
-<?
+<?php 
 }else{
 	//Not Complete
 ?>
@@ -123,13 +123,13 @@ if($PostComplete){
 					<B><FONT COLOR="#990000"><?=$VIEWBOARD[topic];?></FONT></B>
 					<BR>
 					<B>โดย : </B>
-				<?//กรณีสมาชิก
+				<?php //กรณีสมาชิก
 					if($VIEWBOARD[is_member]){
 						echo "<IMG SRC=\"images/human.gif\" BORDER=\"0\" ALIGN=\"absmiddle\"> ";
 					}else{ };
 				?>
 					<?=$VIEWBOARD[post_name];?> &nbsp; <B>เมื่อวันที่ : </B><?= ThaiTimeConvert($VIEWBOARD[post_date],"1","");?> &nbsp;&nbsp;
-<?
+<?php 
 if($_SESSION['admin_user']){
 	if($VIEWBOARD[pin_date]){
 		echo "<A HREF=\"javascript:Confirm('?name=webboard&file=pin_topic&action=removepin&id=".$_GET[id]."','คุณมั่นใจในการลบกระทู้นี้ออกจากการปักหมุด ?');\"><IMG SRC=\"images/admin/pin.gif\" WIDTH=\"16\" HEIGHT=\"16\" BORDER=\"0\" ALIGN=\"absmiddle\"> ยกเลิกปักหมุด </A>&nbsp;&nbsp;&nbsp;";
@@ -148,7 +148,7 @@ if($_SESSION['admin_user']){
 				<TR>
 					<TD>
 					<BR>
-					<?
+					<?php 
 					//Show Picture
 					if($VIEWBOARD[picture]){
 						$postpicupload = @getimagesize ("webboard_upload/".$VIEWBOARD[picture]."");
@@ -172,7 +172,7 @@ if($_SESSION['admin_user']){
 			</TABLE>
 
 
-<?
+<?php 
 //ดึงรายการความคิดเห็น
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res[comment] = $db->select_query("SELECT * FROM ".TB_WEBBOARD_COMMENT." WHERE topic_id = '".$_GET[id]."' ORDER BY id ");
@@ -184,7 +184,7 @@ while($arr[comment] = $db->fetch($res[comment])){
 			<TABLE cellSpacing=5 cellPadding=0 width=550 border=0 align="center" class="tablecomment">
 			<TR>
 				<TD><B><FONT COLOR="#990000">ความคิดเห็นที่ <?=$count;?></FONT></B>
-				<?if($_SESSION['admin_user']){echo " <A HREF=\"javascript:Confirm('?name=webboard&file=delete_comment&id=".$_GET[id]."&comment=".$arr[comment][id]."','คุณมั่นใจในการลบความคิดเห็นนี้ ?');\"><IMG SRC=\"images/admin/trash.gif\" WIDTH=\"20\" HEIGHT=\"20\" BORDER=\"0\" ALIGN=\"absmiddle\"></A>";};?>
+				<?php if($_SESSION['admin_user']){echo " <A HREF=\"javascript:Confirm('?name=webboard&file=delete_comment&id=".$_GET[id]."&comment=".$arr[comment][id]."','คุณมั่นใจในการลบความคิดเห็นนี้ ?');\"><IMG SRC=\"images/admin/trash.gif\" WIDTH=\"20\" HEIGHT=\"20\" BORDER=\"0\" ALIGN=\"absmiddle\"></A>";};?>
 				<BR><?= ThaiTimeConvert($arr[comment][post_date],"1","1");?>
 				</TD>
 			</TR>
@@ -193,7 +193,7 @@ while($arr[comment] = $db->fetch($res[comment])){
 			</TR>
 			<TR>
 				<TD>
-<?
+<?php 
 //Show Picture
 if($arr[comment][picture]){
 	$postpicupload = @getimagesize ("webboard_upload/".$arr[comment][picture]."");
@@ -216,7 +216,7 @@ if($arr[comment][picture]){
 			</TR>
 			</TABLE>
 			<BR>
-<?
+<?php 
 }
 $db->closedb ();
 ?>
@@ -236,7 +236,7 @@ $db->closedb ();
 	<TD><INPUT TYPE="text" NAME="topic" style="width:300" class="inputform" value="<?=$VIEWBOARD[topic];?>" readonly style="color: #FF0000"></TD>
 </TR>
 <TR><TD colspan=2 height=1 class="dotline"></TD></TR>
-<?
+<?php 
 //กรณี โพสรูปได้ 
 if(_ENABLE_BOARD_UPLOAD){
 ?>
@@ -245,7 +245,7 @@ if(_ENABLE_BOARD_UPLOAD){
 	<TD><input type="file" name="FILE" style="width:250" class="inputform"> Limit <?=(_WEBBOARD_LIMIT_UPLOAD/1024);?> kB</TD>
 </TR>
 <TR><TD colspan=2 height=1 class="dotline"></TD></TR>
-<?
+<?php 
 }
 ?>
 <TR>
@@ -435,12 +435,12 @@ function setsmile(what)
 	<TD><TEXTAREA NAME="detail" ROWS="10" style="width:350" class="textareaform"></TEXTAREA></TD>
 </TR>
 <TR><TD colspan=2 height=1 class="dotline"></TD></TR>
-<?
+<?php 
 if(USE_CAPCHA){
 ?>
 						<TR>
 							<TD width=150 align=right>
-							<?if(CAPCHA_TYPE == 1){ 
+							<?php if(CAPCHA_TYPE == 1){ 
 								echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 							}else if(CAPCHA_TYPE == 2){ 
 								echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
@@ -449,12 +449,12 @@ if(USE_CAPCHA){
 							<TD><input name="security_code" type="text" id="security_code" size="20" maxlength="6" style="width:80" > ใส่รหัสที่ท่านเห็นลงในช่องนี้ </TD>
 						</TR>
 						<TR><TD colspan=2 height=1 class="dotline"></TD></TR>
-<?
+<?php 
 }
 ?>
 <TR>
 	<TD width=150 align=right><IMG SRC="images/bullet.gif" BORDER="0" ALIGN="absmiddle"> <B>ชื่อของท่าน : </B></TD>
-	<TD><INPUT TYPE="text" NAME="post_name" style="width:150" class="inputform" <?if($_SESSION['zone_user']){echo "value=\"".$_SESSION['zone_user']."\" readonly style=\"color: #FF0000\" ";};?>></TD>
+	<TD><INPUT TYPE="text" NAME="post_name" style="width:150" class="inputform" <?php if($_SESSION['zone_user']){echo "value=\"".$_SESSION['zone_user']."\" readonly style=\"color: #FF0000\" ";};?>></TD>
 </TR>
 <TR><TD colspan=2 height=1 class="dotline"></TD></TR>
 <TR>
@@ -469,7 +469,7 @@ if(USE_CAPCHA){
 				</TR>
 			  </TBODY>
 			</TABLE>
-<?
+<?php 
 }
 //จบการแสดงผลฟอร์ม Post
 ?>

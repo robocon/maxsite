@@ -11,7 +11,7 @@
 				</TR>
 				<TR>
 					<TD>
-<?
+<?php 
 //Check Admin
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res[admin] = $db->select_query("SELECT * FROM ".TB_ADMIN." WHERE username='".$_POST[username]."' AND password='".md5($_POST[password])."'  "); 
@@ -45,7 +45,7 @@ if($arr[admin][id]){
 <A HREF="?name=admin&file=main"><B>เข้าหน้าหลักผู้ดูแลระบบ</B></A>
 </CENTER>
 <BR><BR>
-<?
+<?php 
 }else{
 	//Login ไม่ผ่าน
 ?>
@@ -61,12 +61,12 @@ if($arr[admin][id]){
 						<TD width="100" align="right"><B>รหัสผ่าน : </B></TD>
 						<TD><INPUT TYPE="password" NAME="password"></TD>
 					</TR>
-<?
+<?php 
 if(USE_CAPCHA){
 ?>
 					<TR>
 						<TD width="100" align="right">
-						<?if(CAPCHA_TYPE == 1){ 
+						<?php if(CAPCHA_TYPE == 1){ 
 							echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 						}else if(CAPCHA_TYPE == 2){ 
 							echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
@@ -74,7 +74,7 @@ if(USE_CAPCHA){
 						</TD>
 						<TD><input name="security_code" type="text" id="security_code" maxlength="6" ></TD>
 					</TR>
-<?
+<?php 
 }
 ?>
 					<TR>
@@ -83,7 +83,7 @@ if(USE_CAPCHA){
 					</TR>
 					</TABLE>
 					</FORM>
-<?
+<?php 
 }
 ?>
 					</TD>

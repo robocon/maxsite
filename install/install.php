@@ -1,4 +1,4 @@
-<?
+<?php 
 $host=mysql_escape_string($_POST['db_hostname']);
 $db_name=mysql_escape_string($_POST['db_name']);
 $db_user=mysql_escape_string($_POST['db_username']);

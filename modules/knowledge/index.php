@@ -9,7 +9,7 @@
 			<form name="categoty">
 			  <select name="category" onchange="MM_jumpMenu('parent',this,0)">
 				<option value="?name=knowledge">-- หมวดหมู่ทั้งหมด --</option>
-<?
+<?php 
 $_GET['category'] = intval($_GET['category']);
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res[category] = $db->select_query("SELECT * FROM ".TB_KNOWLEDGE_CAT." ORDER BY sort  ");
@@ -28,7 +28,7 @@ $db->closedb ();
 		  </div>
 			<BR>
 				<TABLE width="700" align=center cellSpacing=0 cellPadding=0 border=0>
-<?
+<?php 
 //แสดงสาระความรู้ 
 if($_GET[category]){
 	$SQLwhere = " category='".$_GET[category]."' ";
@@ -65,14 +65,14 @@ while($arr[knowledge] = $db->fetch($res[knowledge])){
 					<TD>
 					<A HREF="?name=knowledge&file=readknowledge&id=<?=$arr[knowledge][id];?>" target="_blank">
 					<IMG SRC="knowledgeicon/<?=$arr[knowledge][post_date];?>.jpg" WIDTH="80" HEIGHT="60" BORDER="0" ALIGN="left" class="topicicon"><B><?=$arr[knowledge][topic];?></A></B>
-					<?NewsIcon(TIMESTAMP, $arr[knowledge][post_date], "images/icon_new.gif");?>
+					<?php NewsIcon(TIMESTAMP, $arr[knowledge][post_date], "images/icon_new.gif");?>
 					<BR><?=$arr[knowledge][headline];?>
 					</TD>
 				</TR>
 				<TR><TD height="3" ></TD></TR>
 				</TABLE>
 			</TD>
-<?
+<?php 
 $count++;
 if (($count%_KNOW_COL) == 0) { echo "</TR><TR><TD colspan=2 height=\"1\" class=\"dotline\"></TD></TR>"; $count=0; }
 }
@@ -84,7 +84,7 @@ $db->closedb ();
 				<table border="0" cellpadding="0" cellspacing="1" width="700" align=center>
 					<tr>
 						<td>
-				<?
+				<?php 
 				SplitPage($page,$totalpage,"?name=knowledge&category=".$_GET[category]."");
 				echo $ShowSumPages ;
 				echo "<BR>";

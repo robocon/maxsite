@@ -1,4 +1,4 @@
-<?
+<?php 
 CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 ?>
 	<TABLE cellSpacing=0 cellPadding=0 width=720 border=0>

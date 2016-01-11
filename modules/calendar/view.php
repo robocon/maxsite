@@ -1,5 +1,5 @@
 <TABLE width="100%" align=center cellSpacing=5 cellPadding=0 border=0>
-<?
+<?php 
 $_GET['id'] = intval($_GET['id']);
 //แสดงปฏิทิน
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
@@ -43,18 +43,18 @@ if(!$arr[event][id]){
 					<TD>
 					<BR>
 					<B>ลงประกาศเมื่อ : </B><?= ThaiTimeConvert($arr[event][post_date],"1","");?>
-<?
+<?php 
 if($_SESSION['admin_user']){
 	//Admin Login Show Icon
 ?>
-				  <a href="?name=admin&file=editevent&id=<? echo $arr[event][id];?>"><img src="images/admin/edit.gif" border="0" alt="แก้ไข" ></a> 
-				  <a href="javascript:Confirm('?name=admin&file=delevent&id=<? echo $arr[event][id];?>','คุณมั่นใจในการลบปฏิทินหัวข้อนี้ ?');"><img src="images/admin/trash.gif"  border="0" alt="ลบ" ></a>
-<?
+				  <a href="?name=admin&file=editevent&id=<?php echo $arr[event][id];?>"><img src="images/admin/edit.gif" border="0" alt="แก้ไข" ></a> 
+				  <a href="javascript:Confirm('?name=admin&file=delevent&id=<?php echo $arr[event][id];?>','คุณมั่นใจในการลบปฏิทินหัวข้อนี้ ?');"><img src="images/admin/trash.gif"  border="0" alt="ลบ" ></a>
+<?php 
 }
 ?>	
 					</TD>
 				</TR>
 			</TABLE>
-<?
+<?php 
 }
 ?>

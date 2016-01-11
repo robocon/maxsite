@@ -1,4 +1,4 @@
-<?php
+<?php 
 header("Content-type: image/png");
 session_start();
 

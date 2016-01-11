@@ -1,4 +1,4 @@
-<?
+<?php 
 //News Icon
 function NewsIcon($Ntime="", $Otime="", $Icon=""){
 	if(TIMESTAMP <= ($Otime + 86400)){

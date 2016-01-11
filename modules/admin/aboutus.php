@@ -1,4 +1,4 @@
-<?
+<?php 
 CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 
 if($_GET[op] == "aboutus_edit"){
@@ -43,13 +43,13 @@ $TextContent = stripslashes($TextContent);
 					<TD>
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main">หน้าหลักผู้ดูแลระบบ</A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; เกี่ยวกับเรา</B>
 					<BR><BR>
-<?
+<?php 
 if(!$ProcessOutput){
 ?>
 						<FORM NAME="myform" METHOD=POST ACTION="?name=admin&file=aboutus&op=aboutus_edit">
 						<BR>
 						<B>ข้อความ :</B><BR>
-<?
+<?php 
 include("FCKeditor/fckeditor.php") ;
 $oFCKeditor = new FCKeditor('EDITORTALK') ;
 $oFCKeditor->BasePath	= 'FCKeditor/' ;
@@ -60,7 +60,7 @@ $oFCKeditor->Create() ;
 ?>
 						<input type="submit" value=" แก้ไข " name="submit"> <input type="reset" value=" เคลีย " name="reset">
 						</FORM>
-<?
+<?php 
 }else{
 	echo $ProcessOutput ;
 }

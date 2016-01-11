@@ -1,4 +1,4 @@
-<?
+<?php 
 session_unset();
 session_destroy();
 ?>
@@ -30,12 +30,12 @@ session_destroy();
 						<TD width="100" align="right"><B>รหัสผ่าน : </B></TD>
 						<TD><INPUT TYPE="password" NAME="password"></TD>
 					</TR>
-<?
+<?php 
 if(USE_CAPCHA){
 ?>
 					<TR>
 						<TD width="100" align="right">
-						<?if(CAPCHA_TYPE == 1){ 
+						<?php if(CAPCHA_TYPE == 1){ 
 							echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 						}else if(CAPCHA_TYPE == 2){ 
 							echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
@@ -43,7 +43,7 @@ if(USE_CAPCHA){
 						</TD>
 						<TD><input name="security_code" type="text" id="security_code" maxlength="6" ></TD>
 					</TR>
-<?
+<?php 
 }
 ?>
 					<TR>

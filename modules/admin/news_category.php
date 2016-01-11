@@ -1,4 +1,4 @@
-<?
+<?php 
 CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 ?>
 	<TABLE cellSpacing=0 cellPadding=0 width=720 border=0>
@@ -17,7 +17,7 @@ CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main">หน้าหลักผู้ดูแลระบบ</A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; ข่าวสาร / ประชาสัมพันธ์ </B>
 					<BR><BR>
 					<A HREF="?name=admin&file=news"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> รายการข่าวสาร</A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=news&op=news_add"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"> เพิ่มข่าวสาร</A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=news_category"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle"> รายการหมวดหมู่</A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=news_category&op=newscat_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"> เพิ่มหมวดหมู่</A><BR><BR>
-<?
+<?php 
 //////////////////////////////////////////// แสดงรายการ
 if($_GET[op] == ""){
 ?>
@@ -30,7 +30,7 @@ if($_GET[op] == ""){
    <td align="center" width="50"><font color="#FFFFFF"><B>ลำดับ</B></font></td>
    <td><font color="#FFFFFF"><B><CENTER>Check</CENTER></B></font></td>
   </tr>  
-<?
+<?php 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res[newscat] = $db->select_query("SELECT * FROM ".TB_NEWS_CAT." ORDER BY sort ");
 $rows[newscat] = $db->rows($res[newscat]);
@@ -53,18 +53,18 @@ while ($arr[newscat] = mysql_fetch_array($res[newscat])){
 ?>
     <tr>
      <td width="44">
-      <a href="?name=admin&file=news_category&op=newscat_edit&id=<? echo $arr[newscat][id];?>"><img src="images/admin/edit.gif" border="0" alt="แก้ไข" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=news_category&op=newscat_del&id=<? echo $arr[newscat][id];?>','คุณมั่นใจในการลบหมวดหมู่นี้ ?');"><img src="images/admin/trash.gif"  border="0" alt="ลบ" ></a>
+      <a href="?name=admin&file=news_category&op=newscat_edit&id=<?php echo $arr[newscat][id];?>"><img src="images/admin/edit.gif" border="0" alt="แก้ไข" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=news_category&op=newscat_del&id=<?php echo $arr[newscat][id];?>','คุณมั่นใจในการลบหมวดหมู่นี้ ?');"><img src="images/admin/trash.gif"  border="0" alt="ลบ" ></a>
      </td> 
-     <td><?echo $arr[newscat][category_name];?></td>
-	 <td align="center" width="50" ><?echo $row[sumnews] ;?></td>
-     <td align="center" width="50"><A HREF="?name=admin&file=news_category&op=newscat_edit&action=sort&setsort=<?echo $SETSORT_UP ;?>&move=up&id=<? echo $arr[newscat][id];?>"><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="เลื่อนขึ้น"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=news_category&op=newscat_edit&action=sort&setsort=<?echo $SETSORT_DOWN ;?>&move=down&id=<? echo $arr[newscat][id];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="เลื่อนลง"></A></td>
-     <td valign="top" align="center" width="40"><input type="checkbox" name="list[]" value="<? echo $arr[newscat][id];?>"></td>
+     <td><?php echo $arr[newscat][category_name];?></td>
+	 <td align="center" width="50" ><?php echo $row[sumnews] ;?></td>
+     <td align="center" width="50"><A HREF="?name=admin&file=news_category&op=newscat_edit&action=sort&setsort=<?php echo $SETSORT_UP ;?>&move=up&id=<?php echo $arr[newscat][id];?>"><IMG SRC="images/icon/arrow_up.gif"  BORDER="0" ALT="เลื่อนขึ้น"></A>&nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=news_category&op=newscat_edit&action=sort&setsort=<?php echo $SETSORT_DOWN ;?>&move=down&id=<?php echo $arr[newscat][id];?>"><IMG SRC="images/icon/arrow_down.gif"  BORDER="0" ALT="เลื่อนลง"></A></td>
+     <td valign="top" align="center" width="40"><input type="checkbox" name="list[]" value="<?php echo $arr[newscat][id];?>"></td>
     </tr>
 	<TR>
 		<TD colspan="5" height="1" class="dotline"></TD>
 	</TR>
-<?
+<?php 
  }
 $db->closedb ();
 ?>
@@ -76,7 +76,7 @@ $db->closedb ();
  <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form>
-<?
+<?php 
 }
 else if($_GET[op] == "newscat_add" AND $_GET[action] == "add"){
 	//////////////////////////////////////////// กรณีเพิ่ม Database
@@ -114,7 +114,7 @@ else if($_GET[op] == "newscat_add"){
 <BR><BR>
 <INPUT TYPE="submit" value=" เพิ่มหมวดหมู่ ">
 </FORM>
-<?
+<?php 
 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
@@ -193,7 +193,7 @@ else if($_GET[op] == "newscat_edit"){
 <BR><BR>
 <INPUT TYPE="submit" value=" แก้ไขหมวดหมู่ ">
 </FORM>
-<?
+<?php 
 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;

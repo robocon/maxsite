@@ -1,4 +1,4 @@
-<?
+<?php 
 CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 ?>
 	<TABLE cellSpacing=0 cellPadding=0 width=720 border=0>
@@ -9,7 +9,7 @@ CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 		  <!-- News -->
 		  &nbsp;&nbsp;<IMG SRC="images/menu/textmenu_knowledge2.gif" BORDER="0"><BR><BR>
 				<BR><BR>
-<?
+<?php 
 	$_GET['id'] = intval($_GET['id']);
 	$_GET['comment'] = intval($_GET['comment']);
 	if(CheckLevel($_SESSION['admin_user'],"article_del")){

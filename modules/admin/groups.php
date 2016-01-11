@@ -1,4 +1,4 @@
-<?
+<?php 
 CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 ?>
 	<TABLE cellSpacing=0 cellPadding=0 width=720 border=0>
@@ -19,7 +19,7 @@ CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 <A HREF="?name=admin&file=user"><IMG SRC="images/admin/admins.gif"  BORDER="0" align="absmiddle"> จัดการผู้ดูแลระบบ</A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=user&op=admin_add"><IMG SRC="images/admin/user.gif"  BORDER="0" align="absmiddle"> เพิ่มผู้ดูแลระบบ</A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=groups"><IMG SRC="images/admin/keys.gif"  BORDER="0" align="absmiddle"> ระดับของผู้ดูแลระบบ</A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=groups&op=group_add"><IMG SRC="images/admin/share.gif"  BORDER="0" align="absmiddle"> เพิ่มระดับของผู้ดูแลระบบ</A>
 <BR><BR>
 <!-- แสดงผลรายการกลุ่มผู้ดูแลระบบ -->
-<?
+<?php 
 //////////////////////////////////////////// แสดงรายชื่อกลุ่มผู้ดูแลระบบ
 if($_GET[op] == ""){
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
@@ -40,24 +40,24 @@ $goto = ($page-1)*$limit ;
    <td width=80><CENTER><font color="#FFFFFF"><B>จำนวน</B></font></CENTER></td>
    <td><font color="#FFFFFF"><B><CENTER>Check</CENTER></B></font></td>
   </tr>  
-<?
+<?php 
 $res[groups] = $db->select_query("SELECT * FROM ".TB_ADMIN_GROUP." ORDER BY id LIMIT $goto, $limit ");
 while($arr[groups] = $db->fetch($res[groups])){
 	$row[user] = $db->num_rows(TB_ADMIN,"id"," level=".$arr[groups][id]." ");
 ?>
     <tr>
      <td width="60" align="center">
-      <a href="?name=admin&file=groups&op=group_edit&id=<? echo $arr[groups][id];?>"><img src="images/admin/edit.gif" border="0" alt="แก้ไข" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=groups&op=group_del&id=<? echo $arr[groups][id];?>&level=<?echo $arr[groups][name];?>','คุณมั่นใจในการลบระดับผู้ใช้ : <?echo $arr[groups][name];?>');"><img src="images/admin/trash.gif"  border="0" alt="ลบ" ></a>
+      <a href="?name=admin&file=groups&op=group_edit&id=<?php echo $arr[groups][id];?>"><img src="images/admin/edit.gif" border="0" alt="แก้ไข" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=groups&op=group_del&id=<?php echo $arr[groups][id];?>&level=<?php echo $arr[groups][name];?>','คุณมั่นใจในการลบระดับผู้ใช้ : <?php echo $arr[groups][name];?>');"><img src="images/admin/trash.gif"  border="0" alt="ลบ" ></a>
      </td> 
-     <td><? echo $arr[groups][name];?></td>
-     <td ><CENTER><? echo $row[user];?></CENTER></td>
-     <td align="center" width="40"><input type="checkbox" name="list[]" value="<? echo $arr[groups][id];?>"></td>
+     <td><?php echo $arr[groups][name];?></td>
+     <td ><CENTER><?php echo $row[user];?></CENTER></td>
+     <td align="center" width="40"><input type="checkbox" name="list[]" value="<?php echo $arr[groups][id];?>"></td>
     </tr>
 	<TR>
 		<TD colspan="4" height="1" class="dotline"></TD>
 	</TR>
-<?
+<?php 
  } 
 ?>
  </table>
@@ -67,7 +67,7 @@ while($arr[groups] = $db->fetch($res[groups])){
  <input type="submit" value="Delete" >
  </div>
  </form><BR><BR>
-<?
+<?php 
 	SplitPage($page,$totalpage,"?name=admin&file=groups");
 	echo $ShowSumPages ;
 	echo "<BR>";
@@ -127,7 +127,7 @@ else if($_GET[op] == "group_add"){
         <input type="text" name="GROUP_DESC"  size="40"><br>
         <br>
         <B>กรุณาเลือก :</B><br>
-<?
+<?php 
 	 $m = 0;
 	 $fnum = 3;
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
@@ -172,7 +172,7 @@ $db->closedb ();
         <br><br>
         <input type="submit" value=" เพิ่ม Level " >
 </FORM>
-<?
+<?php 
 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
@@ -219,12 +219,12 @@ else if($_GET[op] == "group_edit"){
 ?>
 <form action="?name=admin&file=groups&op=group_edit&action=edit&id=<?=$_GET[id];?>" name="groups" method="post">
      <B>ชื่อกลุ่ม :</B><br>
-        <input type="text"  name="GROUP_NAME" size="40" value="<?echo $arr[group][name];?>"><br>
+        <input type="text"  name="GROUP_NAME" size="40" value="<?php echo $arr[group][name];?>"><br>
         <B>รายละเอียด :</B><br>
-        <input type="text" name="GROUP_DESC"  size="40" value="<?echo $arr[group][description];?>"><br>
+        <input type="text" name="GROUP_DESC"  size="40" value="<?php echo $arr[group][description];?>"><br>
         <br>
         <B>กรุณาเลือก :</B><br>
-<?
+<?php 
 	 $m = 0;
 	 $fnum = 3;
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
@@ -272,7 +272,7 @@ $db->closedb ();
         <br><br>
         <input type="submit" value=" แก้ไข Level " >
         </form>
-<?
+<?php 
 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;

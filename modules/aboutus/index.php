@@ -12,7 +12,7 @@
 				<TR>
 					<TD>
 					<BR>
-<?
+<?php 
 $FileAboutUs = "aboutus/aboutus.html";
 $FileAboutUsOpen = @fopen($FileAboutUs, "r");
 $AboutUsContent = @fread ($FileAboutUsOpen, @filesize($FileAboutUs));

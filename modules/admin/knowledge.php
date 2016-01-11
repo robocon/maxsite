@@ -1,4 +1,4 @@
-<?
+<?php 
 CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 ?>
 	<TABLE cellSpacing=0 cellPadding=0 width=720 border=0>
@@ -17,7 +17,7 @@ CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 					<BR><B><IMG SRC="images/icon/plus.gif" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=admin&file=main">หน้าหลักผู้ดูแลระบบ</A> &nbsp;&nbsp;<IMG SRC="images/icon/arrow_wap.gif" BORDER="0" ALIGN="absmiddle">&nbsp;&nbsp; สาระน่ารู้ </B>
 					<BR><BR>
 					<A HREF="?name=admin&file=knowledge"><IMG SRC="images/admin/open.gif"  BORDER="0" align="absmiddle"> รายการความรู้</A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=knowledge&op=article_add"><IMG SRC="images/admin/book.gif"  BORDER="0" align="absmiddle"> เพิ่มความรู้</A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=knowledge_category"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle"> รายการหมวดหมู่</A> &nbsp;&nbsp;&nbsp;<A HREF="?name=admin&file=knowledge_category&op=newscat_add"><IMG SRC="images/admin/opendir.gif"  BORDER="0" align="absmiddle"> เพิ่มหมวดหมู่</A><BR><BR>
-<?
+<?php 
 //////////////////////////////////////////// แสดงรายการสาระน่ารู้ 
 if($_GET[op] == ""){
 	$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
@@ -40,7 +40,7 @@ if($_GET[op] == ""){
    <td width="40"><CENTER><font color="#FFFFFF"><B>หมวด</B></font></CENTER></td>
    <td width="40"><CENTER><font color="#FFFFFF"><B>Check</B></font></CENTER></td>
   </tr>  
-<?
+<?php 
 $res[knowledge] = $db->select_query("SELECT * FROM ".TB_KNOWLEDGE." ORDER BY id DESC LIMIT $goto, $limit ");
 while($arr[knowledge] = $db->fetch($res[knowledge])){
 	$res[category] = $db->select_query("SELECT * FROM ".TB_KNOWLEDGE_CAT." WHERE id='".$arr[knowledge][category]."' ");
@@ -54,22 +54,22 @@ while($arr[knowledge] = $db->fetch($res[knowledge])){
 ?>
     <tr>
      <td width="44">
-      <a href="?name=admin&file=knowledge&op=article_edit&id=<? echo $arr[knowledge][id];?>"><img src="images/admin/edit.gif" border="0" alt="แก้ไข" ></a> 
-      <a href="javascript:Confirm('?name=admin&file=knowledge&op=article_del&id=<? echo $arr[knowledge][id];?>&prefix=<? echo $arr[knowledge][post_date];?>','คุณมั่นใจในการลบหัวข้อนี้ ?');"><img src="images/admin/trash.gif"  border="0" alt="ลบ" ></a>
+      <a href="?name=admin&file=knowledge&op=article_edit&id=<?php echo $arr[knowledge][id];?>"><img src="images/admin/edit.gif" border="0" alt="แก้ไข" ></a> 
+      <a href="javascript:Confirm('?name=admin&file=knowledge&op=article_del&id=<?php echo $arr[knowledge][id];?>&prefix=<?php echo $arr[knowledge][post_date];?>','คุณมั่นใจในการลบหัวข้อนี้ ?');"><img src="images/admin/trash.gif"  border="0" alt="ลบ" ></a>
      </td> 
-     <td><A HREF="?name=knowledge&file=readknowledge&id=<?echo $arr[knowledge][id];?>" target="_blank"><?echo $arr[knowledge][topic];?></A><?=$CommentIcon;?></td>
-     <td ><CENTER><?echo ThaiTimeConvert($arr[knowledge][post_date],'','');?></CENTER></td>
+     <td><A HREF="?name=knowledge&file=readknowledge&id=<?php echo $arr[knowledge][id];?>" target="_blank"><?php echo $arr[knowledge][topic];?></A><?=$CommentIcon;?></td>
+     <td ><CENTER><?php echo ThaiTimeConvert($arr[knowledge][post_date],'','');?></CENTER></td>
      <td align="center">
-	 <?if($arr[category][category_name]){ //หากมีหมวดแสดงรูป ?>
-	 <A HREF="#"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle" alt="<?echo $arr[category][category_name];?>" onMouseOver="MM_displayStatusMsg('<?echo $arr[category][category_name];?>');return document.MM_returnValue"></A>
-	 <? } ?>
+	 <?php if($arr[category][category_name]){ //หากมีหมวดแสดงรูป ?>
+	 <A HREF="#"><IMG SRC="images/admin/folders.gif"  BORDER="0" align="absmiddle" alt="<?php echo $arr[category][category_name];?>" onMouseOver="MM_displayStatusMsg('<?php echo $arr[category][category_name];?>');return document.MM_returnValue"></A>
+	 <?php } ?>
 	 </td>
-     <td valign="top" align="center" width="40"><input type="checkbox" name="list[]" value="<? echo $arr[knowledge][id];?>"></td>
+     <td valign="top" align="center" width="40"><input type="checkbox" name="list[]" value="<?php echo $arr[knowledge][id];?>"></td>
     </tr>
 	<TR>
 		<TD colspan="5" height="1" class="dotline"></TD>
 	</TR>
-<?
+<?php 
  } 
 ?>
  </table>
@@ -80,7 +80,7 @@ while($arr[knowledge] = $db->fetch($res[knowledge])){
  <input type="submit" value="Delete" onclick="return delConfirm(document.myform)">
  </div>
  </form><BR><BR>
-<?
+<?php 
 	SplitPage($page,$totalpage,"?name=admin&file=knowledge");
 	echo $ShowSumPages ;
 	echo "<BR>";
@@ -158,7 +158,7 @@ else if($_GET[op] == "article_add"){
 <BR><BR>
 <B>หมวดหมู่ :</B><BR>
 <SELECT NAME="CATEGORY">
-<?
+<?php 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res[category] = $db->select_query("SELECT * FROM ".TB_KNOWLEDGE_CAT." ORDER BY sort ");
 while ($arr[category] = $db->fetch($res[category])){
@@ -170,12 +170,12 @@ $db->closedb ();
 </SELECT>
 <BR><BR>
 <B>รูปไอคอนข่าวสาร : </B><BR>
-<IMG name="view01" SRC="images/knowledge_blank.gif" <?echo " WIDTH=\""._IKNOW_W."\" HEIGHT=\""._IKNOW_H."\" ";?> BORDER="0" ><BR>
+<IMG name="view01" SRC="images/knowledge_blank.gif" <?php echo " WIDTH=\""._IKNOW_W."\" HEIGHT=\""._IKNOW_H."\" ";?> BORDER="0" ><BR>
 <input type="file" name="FILE" onpropertychange="view01.src=FILE.value;" style="width=250;"><BR>
-รูปเป็นไฟล์ .jpg  .jpeg ขนาด <?echo _IKNOW_W." x "._IKNOW_H ;?> Pixels เท่านั้น (หากรูปใหญ่จะย่อให้อัตโนมัติ)
+รูปเป็นไฟล์ .jpg  .jpeg ขนาด <?php echo _IKNOW_W." x "._IKNOW_H ;?> Pixels เท่านั้น (หากรูปใหญ่จะย่อให้อัตโนมัติ)
 <BR><BR>
 <B>เนื้อหา :</B><BR>
-<?
+<?php 
 include("FCKeditor/fckeditor.php") ;
 $oFCKeditor = new FCKeditor('DETAIL') ;
 $oFCKeditor->BasePath	= 'FCKeditor/' ;
@@ -190,7 +190,7 @@ $oFCKeditor->Create() ;
 <input type="submit" value=" เพิ่ม สาระน่ารู้ " name="submit"> <input type="reset" value=" เคลีย " name="reset">
 </FORM>
 <BR><BR>
-<?
+<?php 
 	}else{
 		//กรณีไม่ผ่าน
 		echo  $PermissionFalse ;
@@ -284,7 +284,7 @@ else if($_GET[op] == "article_edit"){
 <BR><BR>
 <B>หมวดหมู่ :</B><BR>
 <SELECT NAME="CATEGORY">
-<?
+<?php 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res[category] = $db->select_query("SELECT * FROM ".TB_KNOWLEDGE_CAT." ORDER BY sort ");
 while ($arr[category] = $db->fetch($res[category])){
@@ -297,12 +297,12 @@ $db->closedb ();
 </SELECT>
 <BR><BR>
 <B>รูปไอคอนข่าวสาร : </B><BR>
-<IMG name="view01" SRC="knowledgeicon/<?=$arr[knowledge][post_date];?>.jpg" <?echo " WIDTH=\""._IKNOW_W."\" HEIGHT=\""._IKNOW_H."\" ";?> BORDER="0" ><BR>
+<IMG name="view01" SRC="knowledgeicon/<?=$arr[knowledge][post_date];?>.jpg" <?php echo " WIDTH=\""._IKNOW_W."\" HEIGHT=\""._IKNOW_H."\" ";?> BORDER="0" ><BR>
 <input type="file" name="FILE" onpropertychange="view01.src=FILE.value;" style="width=250;"><BR>
-รูปเป็นไฟล์ .jpg  .jpeg ขนาด <?echo _IKNOW_W." x "._IKNOW_H ;?> Pixels เท่านั้น (หากรูปใหญ่จะย่อให้อัตโนมัติ)
+รูปเป็นไฟล์ .jpg  .jpeg ขนาด <?php echo _IKNOW_W." x "._IKNOW_H ;?> Pixels เท่านั้น (หากรูปใหญ่จะย่อให้อัตโนมัติ)
 <BR><BR>
 <B>เนื้อหา :</B><BR>
-<?
+<?php 
 include("FCKeditor/fckeditor.php") ;
 $oFCKeditor = new FCKeditor('DETAIL') ;
 $oFCKeditor->BasePath	= 'FCKeditor/' ;
@@ -312,12 +312,12 @@ $oFCKeditor->Value		= $TextContent ;
 $oFCKeditor->Create() ;
 ?>
 <BR>
-<INPUT TYPE="checkbox" NAME="ENABLE_COMMENT" VALUE="1" <?if($arr[knowledge][enable_comment]){echo " Checked";};?>> อนุญาติให้มีการแสดงความคิดเห็น
+<INPUT TYPE="checkbox" NAME="ENABLE_COMMENT" VALUE="1" <?php if($arr[knowledge][enable_comment]){echo " Checked";};?>> อนุญาติให้มีการแสดงความคิดเห็น
 <BR>
 <input type="submit" value=" แก้ไข สาระน่ารู้ " name="submit"> <input type="reset" value=" เคลีย " name="reset">
 </FORM>
 <BR><BR>
-<?
+<?php 
 	}else{
 		//กรณีไม่ผ่าน
 		$ProcessOutput = $PermissionFalse ;

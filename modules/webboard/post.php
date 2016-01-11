@@ -1,4 +1,4 @@
-<?
+<?php 
 //Post Action
 if($_GET[action] == "post"){
 	//Check data
@@ -83,7 +83,7 @@ function emoticon(theSmilie) {
 		  &nbsp;&nbsp;<IMG SRC="images/menu/textmenu_webboard.gif" BORDER="0"><BR>
 
 
-<?
+<?php 
 //แสดงผลการPost
 if($PostComplete){
 	//Complete
@@ -101,7 +101,7 @@ if($PostComplete){
 </TR>
 <TR><TD height=1 class="dotline"></TD></TR>
 </TABLE><BR><BR>
-<?
+<?php 
 }else{
 	//Not Complete
 ?>
@@ -112,7 +112,7 @@ if($PostComplete){
 	<TD>
 	<SELECT NAME="category">
 	<OPTION value="">-- กรุณาเลือกหมวดหมู่ --</OPTION>
-<?
+<?php 
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res[BoardCat] = $db->select_query("SELECT * FROM ".TB_WEBBOARD_CAT." ORDER BY sort ");
 while($arr[BoardCat] = $db->fetch($res[BoardCat])){
@@ -129,7 +129,7 @@ $db->closedb();
 	<TD><INPUT TYPE="text" NAME="topic" style="width:300" class="inputform"></TD>
 </TR>
 <TR><TD colspan=2 height=1 class="dotline"></TD></TR>
-<?
+<?php 
 //กรณี โพสรูปได้ 
 if(_ENABLE_BOARD_UPLOAD){
 ?>
@@ -138,7 +138,7 @@ if(_ENABLE_BOARD_UPLOAD){
 	<TD><input type="file" name="FILE" style="width:250" class="inputform"> Limit <?=(_WEBBOARD_LIMIT_UPLOAD/1024);?> kB</TD>
 </TR>
 <TR><TD colspan=2 height=1 class="dotline"></TD></TR>
-<?
+<?php 
 }
 ?>
 <TR>
@@ -328,12 +328,12 @@ function setsmile(what)
 	<TD><TEXTAREA NAME="detail" ROWS="10" style="width:350" class="textareaform"></TEXTAREA></TD>
 </TR>
 <TR><TD colspan=2 height=1 class="dotline"></TD></TR>
-<?
+<?php 
 if(USE_CAPCHA){
 ?>
 						<TR>
 							<TD width=150 align=right>
-							<?if(CAPCHA_TYPE == 1){ 
+							<?php if(CAPCHA_TYPE == 1){ 
 								echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 							}else if(CAPCHA_TYPE == 2){ 
 								echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
@@ -342,12 +342,12 @@ if(USE_CAPCHA){
 							<TD><input name="security_code" type="text" id="security_code" size="20" maxlength="6" style="width:80" > ใส่รหัสที่ท่านเห็นลงในช่องนี้ </TD>
 						</TR>
 						<TR><TD colspan=2 height=1 class="dotline"></TD></TR>
-<?
+<?php 
 }
 ?>
 <TR>
 	<TD width=150 align=right><IMG SRC="images/bullet.gif" BORDER="0" ALIGN="absmiddle"> <B>ชื่อของท่าน : </B></TD>
-	<TD><INPUT TYPE="text" NAME="post_name" style="width:150" class="inputform" <?if($_SESSION['zone_user']){echo "value=\"".$_SESSION['zone_user']."\" readonly style=\"color: #FF0000\" ";};?>></TD>
+	<TD><INPUT TYPE="text" NAME="post_name" style="width:150" class="inputform" <?php if($_SESSION['zone_user']){echo "value=\"".$_SESSION['zone_user']."\" readonly style=\"color: #FF0000\" ";};?>></TD>
 </TR>
 <TR><TD colspan=2 height=1 class="dotline"></TD></TR>
 <TR>
@@ -357,7 +357,7 @@ if(USE_CAPCHA){
 <TR><TD colspan=2 height=1 class="dotline"></TD></TR>
 </TABLE>
 </FORM>
-<?
+<?php 
 }
 //จบการแสดงผลฟอร์ม Post
 ?>

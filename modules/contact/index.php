@@ -12,7 +12,7 @@
 				<TR>
 					<TD>
 					<BR>
-<?
+<?php 
 if($_GET[action] == "sendmail"){
 	if(!$_POST[SUBJECT] OR !$_POST[YOURMAIL] OR !$_POST[DETAIL]){
 		$Process .= "<CENTER><FONT SIZE=\"3\" COLOR=\"#FF0000\"><B>ท่านกรอกข้อมูลในการติดต่อไม่ครบถ้วน</B></FONT></CENTER><BR>";
@@ -50,12 +50,12 @@ if(!$Complete){
 						<TD align="right" valign="top"><B>ข้อความ : </B></TD>
 						<TD><TEXTAREA NAME="DETAIL" ROWS="5" COLS="40"><?=$_POST[DETAIL];?></TEXTAREA></TD>
 					</TR>
-<?
+<?php 
 if(USE_CAPCHA){
 ?>
 					<TR>
 						<TD align="right">
-						<?if(CAPCHA_TYPE == 1){ 
+						<?php if(CAPCHA_TYPE == 1){ 
 							echo "<img src=\"capcha/CaptchaSecurityImages.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
 						}else if(CAPCHA_TYPE == 2){ 
 							echo "<img src=\"capcha/val_img.php?width=".CAPCHA_WIDTH."&height=".CAPCHA_HEIGHT."&characters=".CAPCHA_NUM."\" width=\"".CAPCHA_WIDTH."\" height=\"".CAPCHA_HEIGHT."\" align=\"absmiddle\" />";
@@ -63,7 +63,7 @@ if(USE_CAPCHA){
 						</TD>
 						<TD><input name="security_code" type="text" id="security_code" size="20" maxlength="6" style="width:80" > ใส่รหัสที่ท่านเห็นลงในช่องนี้ </TD>
 					</TR>
-<?
+<?php 
 }
 ?>
 					<TR>
@@ -72,7 +72,7 @@ if(USE_CAPCHA){
 					</TR>
 					</TABLE>
 					</FORM>
-<?
+<?php 
 }
 ?>
 					<BR><BR>

@@ -9,7 +9,7 @@
 			<form name="categoty">
 			  <select name="category" onchange="MM_jumpMenu('parent',this,0)">
 				<option value="?name=news">-- หมวดหมู่ทั้งหมด --</option>
-<?
+<?php 
 $_GET['category'] = intval($_GET['category']);
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res[category] = $db->select_query("SELECT * FROM ".TB_NEWS_CAT." ORDER BY sort  ");
@@ -28,7 +28,7 @@ $db->closedb ();
 		  </div>
 			<BR>
 				<TABLE width="700" align=center cellSpacing=0 cellPadding=0 border=0>
-<?
+<?php 
 //แสดงข่าวสาร/ประชาสัมพันธ์ 
 if($_GET[category]){
 	$SQLwhere = " category='".$_GET[category]."' ";
@@ -65,14 +65,14 @@ while($arr[news] = $db->fetch($res[news])){
 					<TD>
 					<A HREF="?name=news&file=readnews&id=<?=$arr[news][id];?>" target="_blank">
 					<IMG SRC="newsicon/<?=$arr[news][post_date];?>.jpg" WIDTH="48" HEIGHT="48" BORDER="0" ALIGN="left" class="topicicon"><B><?=$arr[news][topic];?></A></B>
-					<?NewsIcon(TIMESTAMP, $arr[news][post_date], "images/icon_new.gif");?>
+					<?php NewsIcon(TIMESTAMP, $arr[news][post_date], "images/icon_new.gif");?>
 					<BR><?=$arr[news][headline];?>
 					</TD>
 				</TR>
 				<TR><TD height="3" ></TD></TR>
 				</TABLE>
 			</TD>
-<?
+<?php 
 $count++;
 if (($count%_NEWS_COL) == 0) { echo "</TR><TR><TD colspan=2 height=\"1\" class=\"dotline\"></TD></TR>"; $count=0; }
 }
@@ -84,7 +84,7 @@ $db->closedb ();
 				<table border="0" cellpadding="0" cellspacing="1" width="700" align=center>
 					<tr>
 						<td>
-				<?
+				<?php 
 				SplitPage($page,$totalpage,"?name=news&category=".$_GET[category]."");
 				echo $ShowSumPages ;
 				echo "<BR>";
