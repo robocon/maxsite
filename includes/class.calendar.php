@@ -440,14 +440,14 @@ class MyCalendar extends Calendar
         // Only link the first day of every month
         $link = "";
 		$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
-		$res[event] = $db->select_query("SELECT * FROM ".TB_CALENDAR." WHERE date_event='".$year."-".$month."-".$day."' ");
-		$arr[event] = $db->fetch($res[event]);
-        if ($arr[event][id])
+		$query = $db->select_query("SELECT * FROM ".TB_CALENDAR." WHERE date_event='".$year."-".$month."-".$day."' ");
+		$item = $db->fetch($query);
+        if ($item['id'])
         {
-            $link['link'] = "popup.php?name=calendar&file=view&id=".$arr[event][id]."";
-			$arr[event][subject] = eregi_replace("\'", "&#039;", $arr[event][subject]);
-			$arr[event][subject] = htmlspecialchars($arr[event][subject]);
-			$link['title'] = "".stripslashes($arr[event][subject])."";
+            $link['link'] = "popup.php?name=calendar&file=view&id=".$item['id']."";
+			$item['subject'] = eregi_replace("\'", "&#039;", $item['subject']);
+			$item['subject'] = htmlspecialchars($item['subject']);
+			$link['title'] = stripslashes($item['subject']);
         }
         return $link;
     }

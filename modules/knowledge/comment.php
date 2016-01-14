@@ -1,5 +1,5 @@
-<?php 
-if(!$_POST[NAME] OR !$_POST[COMMENT]){
+<?php
+if(!$_POST['NAME'] OR !$_POST['COMMENT']){
 	echo "<script language='javascript'>" ;
 	echo "alert('!!!! กรุณากรอกข้อมูลต่างๆให้ครบถ้วนครับ !!!!')" ;
 	echo "</script>" ;
@@ -15,16 +15,16 @@ if(USE_CAPCHA){
 		exit();
 	}
 }
-checkban($_POST[NAME]);
-checkban($_POST[COMMENT]);
+// checkban($_POST['NAME']);
+// checkban($_POST['COMMENT']);
 
 $_GET['id'] = intval($_GET['id']);
 //ทำการเพิ่มข้อมูลลงดาต้าเบส
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $db->add_db(TB_KNOWLEDGE_COMMENT,array(
 	"knowledge_id"=>"$_GET[id]",
-	"name"=>"".htmlspecialchars($_POST[NAME])."",
-	"comment"=>"".htmlspecialchars($_POST[COMMENT])."",
+	"name"=>"".htmlspecialchars($_POST['NAME'])."",
+	"comment"=>"".htmlspecialchars($_POST['COMMENT'])."",
 	"ip"=>"".IPADDRESS."",
 	"post_date"=>"".TIMESTAMP.""
 ));
@@ -40,7 +40,7 @@ $db->closedb ();
 				<BR><BR><BR><BR>
 				<CENTER><IMG SRC="images/icon/download.gif" BORDER="0"><BR><BR>
 				<FONT SIZE="3" COLOR="#336600"><B>ได้ทำการบันทึกความคิดเห็นของท่านเรียบร้อยแล้ว</B></FONT><BR><BR>
-				<A HREF="?name=knowledge&file=readknowledge&id=<?=$_GET[id];?>">กลับไปหน้าแสดงผล</A>
+				<A HREF="?name=knowledge&file=readknowledge&id=<?=$_GET['id'];?>">กลับไปหน้าแสดงผล</A>
 				</CENTER>
 
 				<BR><BR><BR><BR>

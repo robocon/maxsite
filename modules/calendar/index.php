@@ -1,6 +1,6 @@
 <style type="text/css">
 <!--
-.calendar { 
+.calendar {
     width:220;
     background-color: #FFFFFF;
 }
@@ -14,8 +14,8 @@
 		  <!-- News -->
 		  &nbsp;&nbsp;<IMG SRC="images/menu/textmenu_calendar.gif" BORDER="0"><BR><BR>
 						<CENTER>
-						<?php 
-						if(!$_GET['year']){
+						<?php
+						if(!isset($_GET['year'])){
 							$_GET['year'] = date("Y");
 						}
 						$cal = new MyCalendar;
