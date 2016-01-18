@@ -1,14 +1,14 @@
-<?php 
+<?php
 session_start();
-require_once("mainfile.php");
 $PHP_SELF = "popup.php";
-GETMODULE($_GET[name],$_GET[file]);
+require_once("mainfile.php");
 
+GETMODULE($_GET['name'],$_GET['file']);
 ?>
 <HTML>
 <HEAD>
 <TITLE><?=WEB_TITLE;?></TITLE>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-874">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="keywords" content="เว็บสำเร็จรูป,อัษฎา,มอไซค์ดอทคอม, maxsite">
 <meta name="description" content="เว็บไซต์สำเร็จรูป maxsite">
 <link href="style.css" rel="stylesheet" type="text/css">

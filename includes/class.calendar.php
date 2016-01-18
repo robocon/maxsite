@@ -445,7 +445,7 @@ class MyCalendar extends Calendar
         if ($item['id'])
         {
             $link['link'] = "popup.php?name=calendar&file=view&id=".$item['id']."";
-			$item['subject'] = eregi_replace("\'", "&#039;", $item['subject']);
+			$item['subject'] = str_replace("\'", "&#039;", $item['subject']);
 			$item['subject'] = htmlspecialchars($item['subject']);
 			$link['title'] = stripslashes($item['subject']);
         }
