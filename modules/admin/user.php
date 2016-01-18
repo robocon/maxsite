@@ -295,7 +295,7 @@ CheckAdmin($_SESSION['admin_user'], $_SESSION['admin_pwd']);
 																																					}
 																																					echo $ProcessOutput ;
 																																				}
-																																				else if($_GET['op'] == "minepass_edit" AND $_GET['action'] == "edit"){
+																																				else if($_GET['op'] == "minepass_edit" AND ( isset($_GET['action']) && $_GET['action'] == "edit" ) ){
 																																					//////////////////////////////////////////// กรณีแก้ไขข้อมูลส่วนตัว
 																																					$ProcessOutput = false;
 																																					if(CheckLevel($_SESSION['admin_user'],$_GET['op'])){
