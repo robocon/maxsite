@@ -38,7 +38,7 @@
                                 }
                                 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
                                 $limit = 20 ;
-                                $SUMPAGE = $db->num_rows(TB_KNOWLEDGE,"id","$SQLwhere");
+                                $SUMPAGE = $db->num_rows(TB_KNOWLEDGE, "id", $SQLwhere);
                                 $page = isset($_GET['page']) ? intval($_GET['page']) : 0 ;
                                 if (empty($page)){
                                     $page=1;
@@ -49,8 +49,8 @@
 
                                 $query = $db->select_query("SELECT * FROM ".TB_KNOWLEDGE." $SQLwhere2 ORDER BY id DESC LIMIT $goto, $limit ");
                                 $count=0;
-                                while($item = $db->fetch($query)){
-
+                                $items = $db->fetchAll($query);
+                                foreach($items as $key => $item){
                                     if ($count==0) { echo "<TR>"; }
                                     //ชื่อหมวดหมู่
                                     $query = $db->select_query("SELECT category_name FROM ".TB_KNOWLEDGE_CAT." WHERE id='".$item['category']."' ");

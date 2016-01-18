@@ -28,6 +28,7 @@ function emoticon(theSmilie) {
 							$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 							$query = $db->select_query("SELECT * FROM ".TB_NEWS." WHERE id='".$_GET['id']."' ");
 							$item = $db->fetch($query);
+							$enableComment = $item['enable_comment'];
 							$db->closedb ();
 							if(!$item['id']){
 								echo "<BR><BR><BR><BR><CENTER><IMG SRC=\"images/icon/notview.gif\" BORDER=\"0\" ><BR><BR><B>ไม่มีรายการข่าวสาร/ประชาสัมพันธ์นี้</B></CENTER><BR><BR><BR><BR>";
@@ -54,7 +55,7 @@ function emoticon(theSmilie) {
 												//Admin Login Show Icon
 												?>
 												<a href="?name=admin&file=news&op=news_edit&id=<?php echo $item['id'];?>"><img src="images/admin/edit.gif" border="0" alt="แก้ไข" ></a>
-												<a href="javascript:Confirm('?name=admin&file=news&op=news_del&id=<?php echo $item['id'];?>&prefix=<?php echo $item[post_date];?>','คุณมั่นใจในการลบหัวข้อนี้ ?');"><img src="images/admin/trash.gif"  border="0" alt="ลบ" ></a>
+												<a href="javascript:Confirm('?name=admin&file=news&op=news_del&id=<?php echo $item['id'];?>&prefix=<?php echo $item['post_date'];?>','คุณมั่นใจในการลบหัวข้อนี้ ?');"><img src="images/admin/trash.gif"  border="0" alt="ลบ" ></a>
 												<?php
 											}
 											?>
@@ -88,11 +89,11 @@ function emoticon(theSmilie) {
 																	if(!$cat_rows){
 																		echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ไม่มีรายการในประกาศหมวดหมู่นี้ ";
 																	}
-																	while($item = $db->fetch($query)){
+																	while($category = $db->fetch($query)){
 																		?>
 																		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG SRC="images/icon/suggest.gif" BORDER="0" ALIGN="absmiddle">
-																			<B><A HREF="?name=news&file=readnews&id=<?=$item['id'];?>" target="_blank"><?=$item['topic'];?></A></B>
-																			<?php echo ThaiTimeConvert($item['post_date'],"","");?><BR>
+																			<B><A HREF="?name=news&file=readnews&id=<?=$category['id'];?>" target="_blank"><?=$category['topic'];?></A></B>
+																			<?php echo ThaiTimeConvert($category['post_date'],"","");?><BR>
 																		<?php
 																	}
 																	$db->closedb ();
@@ -106,7 +107,7 @@ function emoticon(theSmilie) {
 														<BR><BR>
 
 															<?php
-															if($item['enable_comment']){
+															if($enableComment){
 
 																//Check Comment
 																$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
@@ -118,7 +119,15 @@ function emoticon(theSmilie) {
 																	<TABLE cellSpacing=5 cellPadding=0 width=480 border=0 align="center" class="tablecomment">
 																		<TR>
 																			<TD><B><FONT COLOR="#990000">ความคิดเห็นที่ <?=$count;?></FONT></B>
-																				<?php if( isset($_SESSION['admin_user']) ){echo " <A HREF=\"?name=news&file=delete_comment&id=".$_GET['id']."&comment=".$comment['id']."\"><IMG SRC=\"images/admin/trash.gif\" WIDTH=\"20\" HEIGHT=\"20\" BORDER=\"0\" ALIGN=\"absmiddle\"></A>";};?>
+																				<?php
+																				if( isset($_SESSION['admin_user']) ){
+																					?>
+																					<a href="?name=news&file=delete_comment&id=<?=$_GET['id'];?>&comment=<?=$comment['id'];?>" onclick="return confirmDelete();">
+																						<img src="images/admin/trash.gif" align="absmiddle" alt="Delete" />
+																					</a>
+																					<?php
+																				}
+																				?>
 																					<BR><?= ThaiTimeConvert($comment['post_date'],"1","1");?>
 																					</TD>
 																				</TR>
@@ -141,6 +150,14 @@ function emoticon(theSmilie) {
 																			}
 																			$db->closedb ();
 																			?>
+																			<script type="text/javascript">
+																				function confirmDelete(){
+																					var v = confirm('ยืนยันที่จะลบ?');
+																					if( v === false ){
+																						return false;
+																					}
+																				}
+																			</script>
 																			<!-- Enable Comment -->
 																			<TABLE cellSpacing=0 cellPadding=0 width=500 border=0 align="center">
 																				<TBODY>

@@ -178,5 +178,13 @@ class DB{
         $this->error[]=mysql_errno();
     }
 
+    public function fetchAll($query){
+        $items = array();
+        while( $item = mysql_fetch_assoc($query)){
+            $items[] = $item;
+        }
+        return $items;
+    }
+
 }
 ?>

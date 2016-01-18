@@ -15,18 +15,18 @@ if(USE_CAPCHA){
 		exit();
 	}
 }
-checkban($_POST['NAME']);
-checkban($_POST['COMMENT']);
+// checkban($_POST['NAME']);
+// checkban($_POST['COMMENT']);
 
 $_GET['id'] = intval($_GET['id']);
 //ทำการเพิ่มข้อมูลลงดาต้าเบส
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $db->add_db(TB_NEWS_COMMENT,array(
-	"news_id"=>"$_GET[id]",
-	"name"=>"".htmlspecialchars($_POST['NAME'])."",
-	"comment"=>"".htmlspecialchars($_POST['COMMENT'])."",
-	"ip"=>"".IPADDRESS."",
-	"post_date"=>"".TIMESTAMP.""
+	"news_id"=> $_GET['id'],
+	"name" => htmlspecialchars($_POST['NAME']),
+	"comment" => htmlspecialchars($_POST['COMMENT']),
+	"ip" => IPADDRESS,
+	"post_date" => TIMESTAMP
 ));
 $db->closedb ();
 ?>
