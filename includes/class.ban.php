@@ -1,9 +1,6 @@
 <?php
 //หากมีการเรียกไฟล์นี้โดยตรง
-if (preg_match("/config\.in\.php/",$PHP_SELF)) {
-    Header("Location: ../index.php");
-    die();
-}
+if( !defined('_MAXSITE') ) die ('Invalid');
 
 ###### Function Check คำโฆษณา #######
 // function check ข้อความว่าโฆษณามาหรือปล่าว

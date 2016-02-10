@@ -15,11 +15,9 @@
 		  &nbsp;&nbsp;<IMG SRC="images/menu/textmenu_calendar.gif" BORDER="0"><BR><BR>
 						<CENTER>
 						<?php
-						if(!isset($_GET['year'])){
-							$_GET['year'] = date("Y");
-						}
-						$cal = new MyCalendar;
-						echo $cal->getYearView($_GET['year']);
+                        $year = input_get('year', date("Y"));
+						$cal = new MyCalendar();
+						echo $cal->getYearView($year);
 						?>
 						</CENTER>
 				<BR><BR>

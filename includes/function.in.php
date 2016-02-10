@@ -1,4 +1,20 @@
 <?php
+/**
+ * เรียกใช้งาน $_GET โดยสามารถกำหนดค่า default และ filter เองได้
+ */
+function input_get($name, $default = false, $filter = FILTER_SANITIZE_STRING){
+	$val = filter_input(INPUT_GET, $name, $filter);
+	return ( is_null($val) ) ? $default : $val ;
+}
+
+/**
+ * เรียกใช้งาน $_POST โดยสามารถกำหนดค่า default และ filter เองได้
+ */
+function input_post($name, $default = false, $filter = FILTER_SANITIZE_STRING){
+	$val = filter_input(INPUT_POST, $name, $filter);
+	return ( is_null($val) ) ? $default : $val ;
+}
+
 //News Icon
 function NewsIcon($Ntime="", $Otime="", $Icon=""){
 	if(TIMESTAMP <= ($Otime + 86400)){

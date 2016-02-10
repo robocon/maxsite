@@ -5,10 +5,7 @@
 	ผู้เขียน					อัษฎา อินต๊ะ
 	ติดต่อ					webmaster@mocyc.com
 */
-if (preg_match("/class\.mysql\.php/", $_SERVER['PHP_SELF'])) {
-    Header("Location: ../index.php");
-    die();
-}
+if( !defined('_MAXSITE') ) die ('Invalid');
 
 class DB{
 	//ส่วนของการเชื่อมต่อ
@@ -187,4 +184,60 @@ class DB{
     }
 
 }
-?>
+
+class msdb{
+	protected $msdb = null;
+	protected $msq = null;
+
+	public function __construct(){
+		$this->connect();
+	}
+
+	public function connect(){
+		try {
+		    $this->msdb = new PDO('mysql:host=localhost;dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
+			$this->msdb->exec("set names utf8");
+			$this->msdb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		} catch (PDOException $e) {
+			$this->log($e->getMessage());
+		}
+	}
+
+	public function query($sql, $data = false){
+		try {
+			$this->msq = $this->msdb->prepare($sql);
+			if( $data !== false && count($data) > 0 ){
+				foreach( $data as $key => $val ){
+					$this->msq->bindParam($key, $val);
+				}
+			}
+			$this->msq->execute();
+		} catch(PDOException $e) {
+			$this->log($e->getMessage());
+		}
+	}
+
+	public function fetch($sql, $data = false){
+		$this->query($sql, $data);
+		return $this->msq->fetch(PDO::FETCH_ASSOC);
+	}
+
+	public function fetchAll($sql, $data = false){
+		$this->query($sql, $data);
+		return $this->msq->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	public function update($sql, $data = false){
+		// $this->query($sql, $data);
+		return $this->msdb->exec($sql);
+	}
+
+	public function log($msg){
+		$data = '['.date('Y-m-d H:i:s').'] '.$msg."\n";
+		file_put_contents('logs/mysql-logs', $data, FILE_APPEND);
+	}
+}
+
+$msdb = new msdb();
+// Example for fetch, fetchAll
+// $test = $msdb->fetchAll("SELECT * FROM `web_admin`");

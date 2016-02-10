@@ -1,115 +1,131 @@
-BODY {
-	FONT-SIZE: 11px; MARGIN: 0px; COLOR: #58595b; FONT-FAMILY: Tahoma, Arial, Helvetica, sans-serif
+/* Main Menu */
+.main-menu-contain{
+	margin: 0 auto;
+	width: auto;
+	padding-left: 1.4em;
 }
-TD {
-	FONT-SIZE: 11px; MARGIN: 0px; COLOR: #666666; FONT-FAMILY: Tahoma, Arial, Helvetica, sans-serif
+.main-menu ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	height: 30px;
 }
-A {
-	COLOR: #58595b; TEXT-DECORATION: underline
+.main-menu ul li{
+	display: inline;
 }
-A:hover {
-	COLOR: #58595b; TEXT-DECORATION: underline
+
+
+/* Style */
+BODY{
+	font-size: 11px; margin: 0; color: #58595b; font-family: Tahoma, Arial, Helvetica, sans-serif
 }
-A:link {
-	COLOR: #58595b; TEXT-DECORATION: none
+TD{
+	font-size: 11px; margin: 0; color: #666666; font-family: Tahoma, Arial, Helvetica, sans-serif
 }
-A:visited {
-	COLOR: #58595b; TEXT-DECORATION: none
+A{
+	color: #58595b; text-decoration: underline
 }
-FORM {
-	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+A:hover{
+	color: #58595b; text-decoration: underline
 }
-UL {
-	MARGIN-TOP: 5px; PADDING-TOP: 0px
+A:link{
+	color: #58595b; text-decoration: none
 }
-IMG {
-	BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px
+A:visited{
+	color: #58595b; text-decoration: none
 }
-INPUT {
-	FONT-SIZE: 11px; COLOR: #58595b; FONT-FAMILY: Tahoma, Arial, Helvetica, sans-serif
+FORM{
+	padding-right: 0; padding-left: 0; padding-bottom: 0; margin: 0; padding-top: 0
 }
-SELECT {
-	FONT-SIZE: 11px; COLOR: #58595b; FONT-FAMILY: Tahoma, Arial, Helvetica, sans-serif
+UL{
+	margin-top: 5px; padding-top: 0
 }
-TEXTAREA {
-	FONT-SIZE: 11px; COLOR: #58595b; FONT-FAMILY: Tahoma, Arial, Helvetica, sans-serif
+IMG{
+	border-ritht: 0; border-top: 0; border-left: 0; border-bottom: 0
 }
-.dotline {
-	BACKGROUND: url(images/dotline.gif) #ffffff repeat-x left top
+INPUT{
+	font-size: 11px; color: #58595b; font-family: Tahoma, Arial, Helvetica, sans-serif
 }
-.topicicon {
+SELECT{
+	font-size: 11px; color: #58595b; font-family: Tahoma, Arial, Helvetica, sans-serif
+}
+TEXTAREA{
+	font-size: 11px; color: #58595b; font-family: Tahoma, Arial, Helvetica, sans-serif
+}
+.dotline{
+	background: url('images/dotline.gif') #ffffff repeat-x left top
+}
+.topicicon{
 	margin: 3px;
 	border: 2px solid #336699;
 }
-.tablecomment {
+.tablecomment{
 	border: 1px solid #339999;
 }
-.foottext {color: #FFFFFF}
+.foottext{color: #FFFFFF}
 
 
-.calendarHeader { 
-    font-weight: bolder; 
-    color: #FFFFFF; 
-    background-color: #CC0000; 
+.calendarHeader{
+	font-weight: bolder;
+	color: #FFFFFF;
+	background-color: #CC0000;
 }
 
-.calendarToday { 
-    background-color: #FFE1CE;
+.calendarToday{
+	background-color: #FFE1CE;
 	font-weight: bold;
 }
 
-.calendar { 
-    width:250;
-    background-color: #F3F3F3;
+.calendar{
+	width:250;
+	background-color: #F3F3F3;
 }
 
-
-
-.highslide-html {
-    background-color: white;
+.highslide-html{
+	background-color: white;
 }
 .highslide-html-content {
 	position: absolute;
-    display: none;
+	display: none;
 }
-.highslide-loading {
-    display: block;
+.highslide-loading{
+	display: block;
 	color: black;
 	font-size: 8pt;
 	font-family: sans-serif;
 	font-weight: bold;
-    text-decoration: none;
+	text-decoration: none;
 	padding: 2px;
 	border: 1px solid black;
-    background-color: white;
-    
-    padding-left: 22px;
-    background-image: url(highslide/graphics/loader.white.gif);
-    background-repeat: no-repeat;
-    background-position: 3px 1px;
+	background-color: white;
+
+	padding-left: 22px;
+	background-image: url('highslide/graphics/loader.white.gif');
+	background-repeat: no-repeat;
+	background-position: 3px 1px;
 }
-.control {
+.control{
 	float: right;
-    display: block;
-    /*position: relative;*/
+	display: block;
+	/*position: relative;*/
 	margin: 0 5px;
 	font-size: 9pt;
-    font-weight: bold;
+	font-weight: bold;
 	text-decoration: none;
 	text-transform: uppercase;
 	color: #999;
 }
-.control:hover {
-	color: black !important;
+.control:hover{
+	color: black!important;
 }
-.highslide-move {
-    cursor: move;
+.highslide-move{
+	cursor: move;
 }
-.highslide-display-block {
-    display: block;
+.highslide-display-block{
+	display: block;
 }
-.highslide-display-none {
-    display: none;
+.highslide-display-none{
+	display: none;
 }
 
 
@@ -127,7 +143,7 @@ TEXTAREA {
 	color: #000000;
 	font-family: MS Sans Serif;
 	font-size: 10px;
-:DXImageTransform.Microsoft.Shadow(color=gray,direction=135);
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135);
 }
 .transp {
 	filter: Alpha(Opacity=100);
@@ -149,117 +165,114 @@ TEXTAREA {
 
 
 /* the div that holds the date picker calendar */
-.dpDiv {
-	}
+.dpDiv{
+}
 
 
 /* the table (within the div) that holds the date picker calendar */
-.dpTable {
+.dpTable{
 	font-family: Tahoma, Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	text-align: center;
 	color: #505050;
 	background-color: #ece9d8;
 	border: 1px solid #AAAAAA;
-	}
+}
 
 
 /* a table row that holds date numbers (either blank or 1-31) */
-.dpTR {
-	}
+.dpTR{
+}
 
 
 /* the top table row that holds the month, year, and forward/backward buttons */
-.dpTitleTR {
-	}
+.dpTitleTR{
+}
 
 
 /* the second table row, that holds the names of days of the week (Mo, Tu, We, etc.) */
-.dpDayTR {
-	}
+.dpDayTR{
+}
 
 
 /* the bottom table row, that has the "This Month" and "Close" buttons */
-.dpTodayButtonTR {
-	}
+.dpTodayButtonTR{
+}
 
 
 /* a table cell that holds a date number (either blank or 1-31) */
-.dpTD {
+.dpTD{
 	border: 1px solid #ece9d8;
-	}
+}
 
 
 /* a table cell that holds a highlighted day (usually either today's date or the current date field value) */
-.dpDayHighlightTD {
+.dpDayHighlightTD{
 	background-color: #CCCCCC;
 	border: 1px solid #AAAAAA;
-	}
+}
 
 
 /* the date number table cell that the mouse pointer is currently over (you can use contrasting colors to make it apparent which cell is being hovered over) */
-.dpTDHover {
+.dpTDHover{
 	background-color: #aca998;
 	border: 1px solid #888888;
 	cursor: pointer;
 	color: red;
-	}
+}
 
 
 /* the table cell that holds the name of the month and the year */
-.dpTitleTD {
-	}
+.dpTitleTD{
+}
 
 
 /* a table cell that holds one of the forward/backward buttons */
-.dpButtonTD {
-	}
+.dpButtonTD{
+}
 
 
 /* the table cell that holds the "This Month" or "Close" button at the bottom */
-.dpTodayButtonTD {
-	}
+.dpTodayButtonTD{
+}
 
 
 /* a table cell that holds the names of days of the week (Mo, Tu, We, etc.) */
-.dpDayTD {
+.dpDayTD{
 	background-color: #CCCCCC;
 	border: 1px solid #AAAAAA;
 	color: white;
-	}
+}
 
 
 /* additional style information for the text that indicates the month and year */
-.dpTitleText {
+.dpTitleText{
 	font-size: 12px;
 	color: gray;
 	font-weight: bold;
-	}
+}
 
-
-/* additional style information for the cell that holds a highlighted day (usually either today's date or the current date field value) */ 
-.dpDayHighlight {
-	color: 4060ff;
+/* additional style information for the cell that holds a highlighted day (usually either today's date or the current date field value) */
+.dpDayHighlight{
+	color: #4060ff;
 	font-weight: bold;
-	}
-
+}
 
 /* the forward/backward buttons at the top */
-.dpButton {
+.dpButton{
 	font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
 	font-size: 10px;
 	color: gray;
 	background: #d8e8ff;
 	font-weight: bold;
-	padding: 0px;
-	}
-
+	padding: 0;
+}
 
 /* the "This Month" and "Close" buttons at the bottom */
-.dpTodayButton {
+.dpTodayButton{
 	font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
 	font-size: 10px;
 	color: gray;
 	background: #d8e8ff;
 	font-weight: bold;
-	}
+}

@@ -1,9 +1,6 @@
 <?php
 //หากมีการเรียกไฟล์นี้โดยตรง
-if (preg_match('/config\.in\.php/', $PHP_SELF)) {
-    Header("Location: ../index.php");
-    die();
-}
+if( !defined('_MAXSITE') ) die ('Invalid');
 
 // PHP Calendar Class Version 1.4 (5th March 2001)
 //
@@ -436,12 +433,12 @@ class MyCalendar extends Calendar
 
     function getDateLink($day, $month, $year)
     {
-		global $db ;
+		global $msdb;
         // Only link the first day of every month
         $link = "";
-		$db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
-		$query = $db->select_query("SELECT * FROM ".TB_CALENDAR." WHERE date_event='".$year."-".$month."-".$day."' ");
-		$item = $db->fetch($query);
+		$sql = "SELECT * FROM `web_calendar` WHERE `date_event` = :date_event ";
+        $item = $msdb->fetch($sql, array(':date_event' => $year.'-'.$month.'-'.$day));
+
         if ($item['id'])
         {
             $link['link'] = "popup.php?name=calendar&file=view&id=".$item['id']."";
@@ -449,6 +446,7 @@ class MyCalendar extends Calendar
 			$item['subject'] = htmlspecialchars($item['subject']);
 			$link['title'] = stripslashes($item['subject']);
         }
+
         return $link;
     }
 }
