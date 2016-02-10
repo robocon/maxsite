@@ -17,14 +17,14 @@ define("_VERSION","1.10");
 
 //Web Config
 define("WEB_TITLE","## "._SCRIPT." "._VERSION." ##");
-define("WEB_URL","http://localhost/maxsite1.10") ;
-define("WEB_EMAIL","xxx@xxx.com") ;
+define("WEB_URL","%WEB_URL%") ;
+define("WEB_EMAIL","%WEB_EMAIL%") ;
 define("TIMESTAMP",time()) ;
 
 //Capcha ตัวหนังสือยืนยันการโพสข้อความ
-define("USE_CAPCHA", true); //ใช้การป้องกันการโพสสแปม   true , false
-define("CAPCHA_TYPE","2"); //รูปแบบของตัวอักษร 1 = แบบสวยงาม , 2 = แบบธรรมดา
-define("CAPCHA_NUM","6"); //จำนวนตัวอักษร
+define("USE_CAPCHA", "%USE_CAPCHA%"); //ใช้การป้องกันการโพสสแปม   true , false
+define("CAPCHA_TYPE","%CAPCHA_TYPE%"); //รูปแบบของตัวอักษร 1 = แบบสวยงาม , 2 = แบบธรรมดา
+define("CAPCHA_NUM","%CAPCHA_NUM%"); //จำนวนตัวอักษร
 define("CAPCHA_WIDTH","80"); //ขนาดความกว้าง
 define("CAPCHA_HEIGHT","25"); //ขนาดความสูง
 
@@ -38,10 +38,10 @@ define("USE_THAIYEAR", true); //แสดงผลเป็น พ.ศ. ใน c
 
 
 //MySQL Connect
-define("DB_HOST","localhost");
-define("DB_NAME","maxsite");
-define("DB_USERNAME","root");
-define("DB_PASSWORD","");
+define("DB_HOST","%DB_HOST%");
+define("DB_NAME","%DB_NAME%");
+define("DB_USERNAME","%DB_USERNAME%");
+define("DB_PASSWORD","%DB_PASSWORD%");
 
 //MySQL table
 define("TB_ADMIN","web_admin");

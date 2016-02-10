@@ -1,12 +1,12 @@
 #####  เกี่ยวกับโปรแกรม #####
-MAXSITE 1.10 : 
+MAXSITE 1.10 :
 เป็นระบบเว็บสำเร็จรูปอย่างง่ายๆ เพื่อเป็นพื้นฐานในการพัฒนาโปรแกรมแบบง่ายๆ โดยการแก้ไข Template แค่ไฟล์เดียว ไม่ได้มีระบบยิ่งใหญ่อะไรเหมือนพวก nuke , jumla , mambo หรือ CMS ตัวอื่นๆนะครับ เพราะบางครั้งผมคิดว่ามันเกินความจำเป็น ระบบที่ทำเลยออกจะเป็น Manual ซะมากกว่านะครับ เพราะผมทำระบบแนวๆนี้เพราะมันสามารถนำไปประยุกต์ใช้ทำเว็บได้หลากหลายกว่านะครับ
 
 #####  ความต้องการของระบบ #####
-ระบบปฏิบัติการ Windows/Linux (หากเป็นระบบปฏิบัติการ Windows แนะนำ Windows NT/2000/XP/2003) 
-ซอฟต์แวร์เว็บเซิร์ฟเวอร์ชั่น Microsoft IIS, Apace ฯลฯ 
-ติดตั้ง PHP เวอร์ชั่น 4.0 ขึ้นไป 
-ติดตั้งฐานข้อมูล MySQL เวอร์ชัน 3.0 ขึ้นไป 
+ระบบปฏิบัติการ Windows/Linux ฯลฯ
+์เว็บเซิร์ฟเวอร์เช่น Microsoft IIS, Apache ฯลฯ
+ติดตั้ง PHP เวอร์ชั่น 5.4.x ขึ้นไป 
+ติดตั้งฐานข้อมูล MySQL เวอร์ชัน 5.5 ขึ้นไป
 
 #####  การติดตั้ง #####
 1. อัพโหลดไฟล์ทั้งหมดลงใน Server
@@ -16,7 +16,7 @@ MAXSITE 1.10 :
 	editortalk
 	editortalk/editortalk.html
 	calendardata
-	includes/config.in.php	
+	includes/config.in.php
 	knowledgedata
 	knowledgeicon
 	newsdata
@@ -41,7 +41,7 @@ MAXSITE 1.10 :
 	aboutus/aboutus.html
 	editortalk
 	editortalk/editortalk.html
-	calendardata	
+	calendardata
 	knowledgedata
 	knowledgeicon
 	newsdata
@@ -58,4 +58,4 @@ MAXSITE 1.10 :
 	password : admin
 7. สามารถเพิ่มข้อความในการแบนข้อความจากโฆษณาขายตรง และ คำหยาบ ได้โดยเพิ่มข้อความในไฟล์
 	includes/class.ban.php
-8. ในการเปิดใช้งาน capcha กรณีที่ตัวอักษรไม่ขึ้นให้เข้าไปแก้ที่ไฟล์ capcha/CaptchaSecurityImages.php บรรทัดที่ 6 ให้ใส่ path ให้ถูกต้อง หากต้องการทราบ path ให้เปิดไฟล์ phpinfo.php เพื่อตรวจสอบ path ของเว็บไซต์ 
+8. ในการเปิดใช้งาน capcha กรณีที่ตัวอักษรไม่ขึ้นให้เข้าไปแก้ที่ไฟล์ capcha/CaptchaSecurityImages.php บรรทัดที่ 6 ให้ใส่ path ให้ถูกต้อง หากต้องการทราบ path ให้เปิดไฟล์ phpinfo.php เพื่อตรวจสอบ path ของเว็บไซต์
